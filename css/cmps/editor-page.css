@@ -1,23 +1,74 @@
 .canvas-container {
-  width: 60vw;
-  height: 60vh;
   background-color: #fff;
+  width:100%;
 }
 
+#color-palette {
+  position: absolute;
+  visibility: hidden;
+}
+
+.canvas-container button {
+  background-color: var(--clr5);
+  box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 var(--clr4);
+}
+
+.font-color,.add-line{
+  box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 var(--clr4);
+  border-radius: 2px;
+  padding: 4px;
+  background-color: var(--clr5);
+}
+
+.control-box {
+  width: 100%;
+  margin:10px;
+}
+
+.control-box > *{
+  margin:6px;
+} 
+
+/* 
+
+.control-box .search-field{
+  
+} 
+
+.edit-group-1,.edit-group-2 > *{
+  margin:2px;
+} 
+
+.edit-group-2 > *{
+  margin:2px;
+} 
+
+.btns-row-2,.btns-row-1 > *{
+  margin:2px;
+} */
+
 .switch-line::before {
-  content: "\f1f8";
+  content: "\e099";
 }
 
 .add-line::before {
-  content: "\f1f8";
+  content: "\2b";
 }
 
 .delete-line::before {
   content: "\f1f8";
 }
 
-.decrease-font::before {
-  content: "\f1f8";
+.increase-font::after {
+  content: "\2b";
+  font-size: 15px;
+  vertical-align: text-top;
+}
+
+.decrease-font::after {
+  content: "-";
+  font-size: 15px;
+  vertical-align: text-top;
 }
 
 .align-l::before {

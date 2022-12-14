@@ -12,10 +12,11 @@
     /* main-page bgc */
     --clr3: #383b42;
 
-    /* card title color */
+    /* box shadow color */
+    --clr4:rgba(255, 255, 255, 0.58);
 
     /* white color */
-
+    --clr5: #ffffff;
     /* border color  */
 
     /* card border color */

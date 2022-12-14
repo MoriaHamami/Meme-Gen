@@ -40,8 +40,8 @@ function setAlignment(alignment){
     gMeme.lines[gMeme.selectedLineIdx].align = alignment
 }
 
-function setTxtSize(txtSize) {
-    gMeme.lines[gMeme.selectedLineIdx].size = txtSize
+function setTxtSize(sign) {
+    gMeme.lines[gMeme.selectedLineIdx].size += 1 * sign
     
 }
 
@@ -58,6 +58,7 @@ function setLine() {
         color: 'white',
         font: 'impact'
     })
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 // let gCircle
 

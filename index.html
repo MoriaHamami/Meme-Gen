@@ -26,7 +26,7 @@
                 <input type="search" placeholder="Search" class="search-field" />
                 <button type="submit" class="search-button fa-solid-container">
                 </button>
-              </form>
+            </form>
             <span class="key-words"></span>
             <button>More</button>
         </section>
@@ -36,32 +36,38 @@
     </main>
 
     <main class="saved-page flex">
-  
-    </main>
 
+    </main>
+    
     <main class="editor-page flex" hidden>
-        <section class="canvas-container">
+        <section class="canvas-container flex grow1">
             <canvas width="400" height="400"></canvas>
         </section>
-        <section class="control-box">
-            <input type="search" placeholder="Type text here.." class="search-field" oninput="onChangeText(value)" />
-            <div class="edit-group-1">
+        <section class="control-box flex flex-column grow1">
+            <input type="search" placeholder="Type text here.." class="search-field" id="meme-txt"
+                oninput="onChangeText(value)" />
+            <div class="edit-group-1 flex flex-row space-evenly">
                 <button class="switch-line fa-solid-container"></button>
-                <button class="add-line fa-solid-container"></button>
+                <label for="meme-txt" class="add-line fa-solid-container" onclick="onAddLine()"></label>
                 <button class="delete-line fa-solid-container"></button>
             </div>
             <div class="edit-group-2">
-                <button class="increase-font fa-solid-container"></button>
-                <button class="decrease-font fa-solid-container"></button>
-                <button class="align-l fa-solid-container"></button>
-                <button class="align-c fa-solid-container"></button>
-                <button class="align-r fa-solid-container"></button>
-                <button class="font-family fa-solid-container"></button>
-                <button class="draw fa-solid-container"></button>
-                <button class="font-color fa-solid-container"></button>
+                <div class="btns-row-1 flex flex-row space-evenly">
+                    <button class="increase-font fa-solid-container" onclick="onResizeFont(1)">A</button>
+                    <button class="decrease-font fa-solid-container" onclick="onResizeFont(-1)">A</button>
+                    <button class="align-l fa-solid-container" onclick="onAlign('l')"></button>
+                    <button class="align-c fa-solid-container" onclick="onAlign('c')"></button>
+                    <button class="align-r fa-solid-container" onclick="onAlign('r')"></button>
+                </div>
+                <div class="btns-row-2 flex flex-row space-evenly">
+                    <button class="font-family fa-solid-container"></button>
+                    <button class="draw fa-solid-container"></button>
+                    <input type="color" value="#009900" id="color-palette" oninput="onSetColor(value)">
+                    <label for="color-palette" class="font-color fa-solid-container"></label>
+                </div>
             </div>
             <div class="stickers">
-                
+
             </div>
             <div class="export">
                 <button class="share fa-solid-container">Share</button>

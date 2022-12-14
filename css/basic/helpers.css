@@ -18,6 +18,22 @@
     justify-content: space-around;
 }
 
+.flex.flex-column{
+    flex-direction: column;
+}
+
+.flex.flex-row{
+    flex-direction: row;
+}
+
+.flex.flex-wrap{  
+    flex-wrap:wrap;
+}
+
+.flex.grow1{  
+    flex-grow:1;
+}
+
 /* Flexbox with hidden attribute contradict, quick fix: */
 [hidden] {
     display: none;

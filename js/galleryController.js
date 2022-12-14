@@ -8,7 +8,7 @@ function renderGallery() {
     const imgs = getImgs()
 
     let strHtmls = imgs.map(img => `
-        <img class="gallery-img" src="${img.url}" onclick="onImgSelect(${img.id})">
+        <img class="gallery-img img-${img.id}" src="${img.url}" onclick="onImgSelect(${img.id})">
     `
     )
 
