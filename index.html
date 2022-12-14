@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title>Document</title>
+    <title>memeGen</title>
 </head>
 
-<body>
-    <header>
+<body onload="onInitEditor()">
+    <header class="flex space-between">
         <section class="logo">
             memeGen
         </section>
@@ -20,8 +20,8 @@
         </nav>
     </header>
 
-    <main class="home-page">
-        <section class="filter">
+    <main class="home-page" hidden>
+        <section class="filter flex space-evenly">
             <form>
                 <input type="search" placeholder="Search" class="search-field" />
                 <button type="submit" class="search-button fa-container">
@@ -35,14 +35,45 @@
         </section>
     </main>
 
-    <main class="saved-page">
+    <main class="saved-page flex">
+        <section class="canvas-container">
+            <canvas width="400" height="400"></canvas>
+        </section>
+        <section class="control-box">
+            <input type="search" placeholder="Type text here.." class="search-field" />
+            <div class="edit-group-1">
+                <button></button>
+                <button></button>
+                <button></button>
+            </div>
+            <div class="edit-group-2">
+                <button></button>
+                <button></button>
+                <button></button>
+                <button></button>
+                <button></button>
 
+                <button></button>
+                <button></button>
+            </div>
+            <div class="stickers">
+                
+            </div>
+            <div class="export">
+                <button>Share</button>
+                <button>Download</button>
+            </div>
+        </section>
     </main>
 
     <main class="edit-page">
         
     </main>
 
+    <script src="js/services/memeService.js"></script>
+    <script src="js/services/galleryService.js"></script>
+    <script src="js/memeController.js"></script>
+    <script src="js/galleryController.js"></script>
     <script src="js/main.js"></script>
 </body>
 

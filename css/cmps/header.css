@@ -1,4 +1,20 @@
-/* .main-header {
+header{
+  background-image: var(--clr0);
+  margin: .5rem .2rem;
+  padding: .2rem .8rem;
+  border-radius: 2rem;
+  height: 73px;
+}
+
+.logo{
+  margin-inline-start: 81px;
+}
+
+header nav{
+  margin-inline-end: 81px;
+
+}
+  /* .main-header {
   background-color: var(--clr0);
   color: var(--clr4);
   box-shadow: inset 0px -5px 0 #000;

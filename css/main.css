@@ -17,19 +17,3 @@
 /* @import './cmps/modal.css'; */
 /* @import './cmps/dropdown.css'; */
 
-.fa-container::after {
-  content: "\f002";
-  color: black;
-}
-
-.search-field {
-  padding: 0.625em 2.1875em 0.625em 0.9375em;
-  border: none;
-  border-radius: 100px;
-}
-
-.search-button {
-  background: transparent;
-  border: none;
-  margin-inline-start: -2.0625em;
-}

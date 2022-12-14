@@ -2,12 +2,15 @@
     box-sizing: border-box;
 }
 
-html {
-    font-family: Lato, sans-serif;
-    color: var(--clr2);
-    letter-spacing: 0.48px;
-    line-height: 1.13;
-}
+html { 
+    /* font-family: Lato, sans-serif; */
+    /* color: var(--clr2); */
+    /* letter-spacing: 0.48px; */
+    /* line-height: 1.13; */
+    font-family: pop-r;
+    background-color: var(--clr1);
+    font-size: 21px;
+ } 
 
 body {
     margin: 0;

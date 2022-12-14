@@ -2,3 +2,28 @@
     font-family: fa;
     src: url("../../lib/font-awesome/fa-solid-900.ttf");
 }
+
+@font-face {
+    font-family: pop-l;
+    src: url("../../lib/fonts/Poppins-Light.ttf");
+}
+
+@font-face {
+    font-family: pop-r;
+    src: url("../../lib/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: pop-m;
+    src: url("../../lib/fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+    font-family: pop-eb;
+    src: url("../../lib/fonts/Poppins-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: pop-sb;
+    src: url("../../lib/fonts/Poppins-SemiBold.ttf");
+}

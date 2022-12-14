@@ -1,12 +1,16 @@
-
-
 :root {
     /* pallete */
-    /* header color */
+    /* gradient colors */
+    --clr0: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
 
-    /* brand color */
+    /* bgc */
+    --clr1: #22252c;
 
-    /* paragraph color */
+    /* keywords bgc */
+    --clr2: #fefefe;
+
+    /* main-page bgc */
+    --clr3: #383b42;
 
     /* card title color */
 
@@ -18,7 +22,6 @@
 
     /* a footer color */
 
-    /* footer bg */
 
     /* footer CR */
 
