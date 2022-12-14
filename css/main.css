@@ -1,0 +1,35 @@
+/* Setup */
+@import './setup/vars.css';
+@import './setup/font-face.css';
+
+/* Basic */
+@import './basic/base.css';
+@import './basic/buttons.css';
+@import './basic/icons.css';
+@import './basic/helpers.css';
+@import './basic/layout.css';
+
+/* Cmps */
+@import './cmps/header.css';
+@import './cmps/home-page.css';
+@import './cmps/saved-page.css';
+@import './cmps/edit-page.css';
+/* @import './cmps/modal.css'; */
+/* @import './cmps/dropdown.css'; */
+
+.fa-container::after {
+  content: "\f002";
+  color: black;
+}
+
+.search-field {
+  padding: 0.625em 2.1875em 0.625em 0.9375em;
+  border: none;
+  border-radius: 100px;
+}
+
+.search-button {
+  background: transparent;
+  border: none;
+  margin-inline-start: -2.0625em;
+}

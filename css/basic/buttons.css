@@ -1,0 +1,23 @@
+/* .btn-round {
+    border: 2px solid var(--clr6);
+    color: var(--clr6);
+    background-color: var(--clr4);
+    border-radius: 2em;
+    align-self: flex-start;
+    padding: 0.75em 1.625em;
+    position: relative;
+
+    transition: padding 0.4s;
+}
+
+.btn-round:hover {
+    border: 2px solid var(--clr1);
+    color: var(--clr1);
+    padding-inline-end: 2.25em;
+}
+
+.btn-round:hover::after {
+    content: "→";
+    position: absolute;
+    right: 0.75em;
+} */
