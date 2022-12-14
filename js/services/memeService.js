@@ -5,10 +5,12 @@ let gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'eat Falafel',
-            size: 20,
+            pos: {x: null, y:null},
+            txt: '',
+            size: 40,
             align: 'center',
-            color: 'red'
+            color: 'white',
+            font: 'impact'
         }
     ]
 }
@@ -17,26 +19,56 @@ function getMeme(){
     return gMeme
 }
 
+function setImg(imgId){
+    gMeme.selectedImgId = imgId
+}
+
+function setSelectedLine(pos){
+    const selectedIdx = gMeme.lines.findIndex(line => line.pos===pos)
+    gMeme.selectedLineIdx = selectedIdx
+}
+
+function setPosition(position) {
+    gMeme.lines[gMeme.selectedLineIdx].pos = position
+}
+
 function setLineTxt(text){
-    const meme = getMeme()
-    meme.lines[0].txt = text
-    console.log('meme:', meme)
+    gMeme.lines[gMeme.selectedLineIdx].txt = text
 }
 
-function setImg(){
-
+function setAlignment(alignment){
+    gMeme.lines[gMeme.selectedLineIdx].align = alignment
 }
 
-let gCircle
-
-function createCircle(pos) {
-    gCircle = {
-        pos,
-        size: 60,
-        color: 'blue',
-        isDrag: false
-    }
+function setTxtSize(txtSize) {
+    gMeme.lines[gMeme.selectedLineIdx].size = txtSize
+    
 }
+
+function setTxtColor(txtColor){
+    gMeme.lines[gMeme.selectedLineIdx].color = txtColor
+}
+
+function setLine() {
+    gMeme.lines.push({
+        pos: {x: null, y:null},
+        txt: '',
+        size: 40,
+        align: 'center',
+        color: 'white',
+        font: 'impact'
+    })
+}
+// let gCircle
+
+// function createCircle(pos) {
+//     gCircle = {
+//         pos,
+//         size: 60,
+//         color: 'blue',
+//         isDrag: false
+//     }
+// }
 
 // function getCircle() {
 //     return gCircle

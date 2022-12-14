@@ -1,5 +1,53 @@
 .canvas-container {
-    width: 60vw;
-    height: 60vh;
-    background-color: #fff;
-  }
+  width: 60vw;
+  height: 60vh;
+  background-color: #fff;
+}
+
+.switch-line::before {
+  content: "\f1f8";
+}
+
+.add-line::before {
+  content: "\f1f8";
+}
+
+.delete-line::before {
+  content: "\f1f8";
+}
+
+.decrease-font::before {
+  content: "\f1f8";
+}
+
+.align-l::before {
+  content: "\f036";
+}
+
+.align-c::before {
+  content: "\f039";
+}
+
+.align-r::before {
+  content: "\f038";
+}
+
+.font-family::before {
+  content: "\f1f8";
+}
+
+.draw::before {
+  content: "\f303";
+}
+
+.font-color::before {
+  content: "\f53f";
+}
+
+.share::before {
+  content: "\f1e0";
+}
+
+.download::before {
+  content: "\f019";
+}

@@ -12,7 +12,7 @@
     border-radius: 0.9rem;
 }
 
-.fa-container::after {
+.search-button::before {
     content: "\f002";
     /* Makes magnifying glass gradient */
     background-image: var(--clr0);

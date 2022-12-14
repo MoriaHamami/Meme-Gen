@@ -9,7 +9,7 @@
     <title>memeGen</title>
 </head>
 
-<body onload="onInitEditor()">
+<body onload="onInitGallery()">
     <header class="flex space-between">
         <section class="logo">
             memeGen
@@ -20,52 +20,52 @@
         </nav>
     </header>
 
-    <main class="home-page" hidden>
+    <main class="home-page">
         <section class="filter flex space-evenly">
             <form>
                 <input type="search" placeholder="Search" class="search-field" />
-                <button type="submit" class="search-button fa-container">
+                <button type="submit" class="search-button fa-solid-container">
                 </button>
               </form>
             <span class="key-words"></span>
             <button>More</button>
         </section>
         <section class="gallery">
-
         </section>
+
     </main>
 
     <main class="saved-page flex">
   
     </main>
 
-    <main class="editor-page flex">
+    <main class="editor-page flex" hidden>
         <section class="canvas-container">
-            <canvas></canvas>
+            <canvas width="400" height="400"></canvas>
         </section>
         <section class="control-box">
             <input type="search" placeholder="Type text here.." class="search-field" oninput="onChangeText(value)" />
             <div class="edit-group-1">
-                <button class="switch-line"></button>
-                <button class="add-line"></button>
-                <button class="delete-Line"></button>
+                <button class="switch-line fa-solid-container"></button>
+                <button class="add-line fa-solid-container"></button>
+                <button class="delete-line fa-solid-container"></button>
             </div>
             <div class="edit-group-2">
-                <button class="increase-size"></button>
-                <button class="decrease-size"></button>
-                <button class="align-l"></button>
-                <button class="align-c"></button>
-                <button class="align-r"></button>
-                <button class="font-family"></button>
-                <button class="draw"></button>
-                <button class="font-color"></button>
+                <button class="increase-font fa-solid-container"></button>
+                <button class="decrease-font fa-solid-container"></button>
+                <button class="align-l fa-solid-container"></button>
+                <button class="align-c fa-solid-container"></button>
+                <button class="align-r fa-solid-container"></button>
+                <button class="font-family fa-solid-container"></button>
+                <button class="draw fa-solid-container"></button>
+                <button class="font-color fa-solid-container"></button>
             </div>
             <div class="stickers">
                 
             </div>
             <div class="export">
-                <button>Share</button>
-                <button class="download">Download</button>
+                <button class="share fa-solid-container">Share</button>
+                <button class="download fa-solid-container">Download</button>
             </div>
         </section>
     </main>

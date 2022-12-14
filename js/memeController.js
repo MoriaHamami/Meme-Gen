@@ -32,11 +32,7 @@ function renderMeme() {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 6 }
         // drawText('', center.x, center.y)
-        const meme = getMeme()
-        meme.lines.forEach(line => {
-            drawText(line.txt, gElCanvas.width / 2, gElCanvas.height / 6)
-            // drawText(line.txt, line.x, line.y)
-        })
+        renderText()
     }
 }
 
@@ -45,25 +41,49 @@ function onChangeText(txt) {
     renderMeme()
 }
 
-function drawText(text, x, y) {
+function renderText() {
+    const meme = getMeme()
+    var idxCount=-1
+    meme.lines.forEach(line => {
+        idxCount++
+        if(line.pos.x===null || line.pos.y===null) {
+            const idx = idxCount
+            line.pos.x = gElCanvas.width / 2
+            if(idx===0) {
+                line.pos.y = gElCanvas.height / 6
+            } else if(idx===1){
+                line.pos.y = gElCanvas.height / 6 * 3
+            }else {
+                line.pos.y = gElCanvas.height / 6 * 5
+            }
+        }
+        drawText(
+            line.txt, 
+            line.pos.x,
+            line.pos.y, 
+            line.size, 
+            line.color,
+            line.font,
+            line.textAlign
+            )
+        // drawText(line.txt, line.x, line.y)
+    })
+    //Get the props we need from the meme
+    // const { pos, color, size } = getMeme()
+    // //Draw the meme
+    // drawText(pos.x, pos.y, size, color)
+}
+
+function drawText(text, x, y, size, color, font, txtAlign) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
-    gCtx.font = "40px impact";
+    gCtx.fillStyle = color
+    gCtx.font = `${size}px ${font}`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
 
     gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
-}
-
-
-
-function renderText() {
-    //Get the props we need from the meme
-    const { pos, color, size } = getMeme()
-    //Draw the meme
-    drawArc(pos.x, pos.y, size, color)
 }
 
 //Handle the listeners
@@ -92,7 +112,7 @@ function addTouchListeners() {
 function onDown(ev) {
     // Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
-    if (!isMemeClicked(pos)) return
+    if (!isTextClicked(pos)) return
 
     setMemeDrag(true)
     //Save the pos we start from
@@ -140,4 +160,8 @@ function getEvPos(ev) {
         }
     }
     return pos
+}
+
+function onChangeColor(val){
+
 }
