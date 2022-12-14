@@ -10,7 +10,6 @@ function onInitEditor() {
     gCtx = gElCanvas.getContext('2d')
 
     resizeCanvas()
-    //Calc the top center of the canvas
 
     addListeners()
     renderMeme()
@@ -24,24 +23,33 @@ function resizeCanvas() {
 
 //Renders an image on the canvas and a line of text on top
 function renderMeme() {
+    const currMemeId = getMeme().selectedImgId
     const elImg = new Image() // Create a new html img element
-    elImg.src = 'img/1.jpg' // Send a network req to get that image, define the img src
-    // setTimeout(() => {
-    //     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-    // }, 10);
+    elImg.src = `img/${currMemeId}.jpg` // Send a network req to get that image, define the img src
+
     // When the image ready draw it on the canvas
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 6 }
-        drawText('Hello', center.x, center.y)
+        // drawText('', center.x, center.y)
+        const meme = getMeme()
+        meme.lines.forEach(line => {
+            drawText(line.txt, gElCanvas.width / 2, gElCanvas.height / 6)
+            // drawText(line.txt, line.x, line.y)
+        })
     }
+}
+
+function onChangeText(txt) {
+    setLineTxt(txt)
+    renderMeme()
 }
 
 function drawText(text, x, y) {
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'brown'
-    gCtx.fillStyle = 'black'
-    gCtx.font = "40px arial";
+    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = 'white'
+    gCtx.font = "40px impact";
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
 
@@ -65,8 +73,7 @@ function addListeners() {
     //Listen for resize ev
     window.addEventListener('resize', () => {
         resizeCanvas()
-        renderCanvas()
-
+        renderMeme()
     })
 }
 
@@ -114,12 +121,6 @@ function onUp() {
     document.body.style.cursor = 'grab'
 }
 
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
-}
-
 function getEvPos(ev) {
     // Gets the offset pos , the default pos
     let pos = {
@@ -128,7 +129,6 @@ function getEvPos(ev) {
     }
     // Check if its a touch ev
     if (TOUCH_EVS.includes(ev.type)) {
-        console.log('ev:', ev)
         //soo we will not trigger the mouse ev
         ev.preventDefault()
         //Gets the first touch point
@@ -140,14 +140,4 @@ function getEvPos(ev) {
         }
     }
     return pos
-}
-
-function drawArc(x, y, size = 60, color = 'blue') {
-    gCtx.beginPath()
-    gCtx.lineWidth = '6'
-    gCtx.arc(x, y, size, 0, 2 * Math.PI)
-    gCtx.strokeStyle = 'white'
-    gCtx.stroke()
-    gCtx.fillStyle = color
-    gCtx.fill()
 }

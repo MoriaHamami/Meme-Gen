@@ -5,7 +5,7 @@ let gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'eat Falafel',
             size: 20,
             align: 'center',
             color: 'red'
@@ -14,11 +14,13 @@ let gMeme = {
 }
 
 function getMeme(){
-    
+    return gMeme
 }
 
-function setLineTxt(){
-
+function setLineTxt(text){
+    const meme = getMeme()
+    meme.lines[0].txt = text
+    console.log('meme:', meme)
 }
 
 function setImg(){

@@ -36,38 +36,38 @@
     </main>
 
     <main class="saved-page flex">
+  
+    </main>
+
+    <main class="editor-page flex">
         <section class="canvas-container">
-            <canvas width="400" height="400"></canvas>
+            <canvas></canvas>
         </section>
         <section class="control-box">
-            <input type="search" placeholder="Type text here.." class="search-field" />
+            <input type="search" placeholder="Type text here.." class="search-field" oninput="onChangeText(value)" />
             <div class="edit-group-1">
-                <button></button>
-                <button></button>
-                <button></button>
+                <button class="switch-line"></button>
+                <button class="add-line"></button>
+                <button class="delete-Line"></button>
             </div>
             <div class="edit-group-2">
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-
-                <button></button>
-                <button></button>
+                <button class="increase-size"></button>
+                <button class="decrease-size"></button>
+                <button class="align-l"></button>
+                <button class="align-c"></button>
+                <button class="align-r"></button>
+                <button class="font-family"></button>
+                <button class="draw"></button>
+                <button class="font-color"></button>
             </div>
             <div class="stickers">
                 
             </div>
             <div class="export">
                 <button>Share</button>
-                <button>Download</button>
+                <button class="download">Download</button>
             </div>
         </section>
-    </main>
-
-    <main class="edit-page">
-        
     </main>
 
     <script src="js/services/memeService.js"></script>
