@@ -18,9 +18,22 @@ function renderGallery() {
 function onImgSelect(imgId) {
     setImg(imgId)
     // renderMeme()
+    offActiveGallery()
+    offActiveSaved()
     const elHomePage = document.querySelector('.home-page')
     const elEditorPage = document.querySelector('.editor-page')
     elHomePage.hidden = true
     elEditorPage.hidden = false
     onInitEditor()
 }
+
+function onKeyUpSearch() {
+    // setTimeout(() => {
+        const searchStr = document.querySelector('.home-page .search-field').value
+        // console.log(':', )
+        setImgFilter(searchStr)
+        renderGallery()
+        // document.querySelector('input[name="search"]').value = searchStr
+    // }, 1500)
+}
+

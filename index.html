@@ -10,27 +10,30 @@
 </head>
 
 <body onload="onInitGallery()">
-    <div class="main-screen" onclick="toggleMenu()"></div>
+    <div class="dark-screen" onclick="toggleMenu()"></div>
 
     <header class="flex space-between">
-        <section class="logo">
+        <section class="logo" onclick="onGalleryPageSelected()">
             memeGen
         </section>
         <nav>
-            <button class="gallery-btn active">Gallery</button>
-            <button class="saved-btn">Saved</button>
+            <!-- <li class="gallery-btn active" onclick="toggleActive(this)">Gallery</li>
+            <li class="saved-btn" onclick="toggleActive(this)">Saved</li> -->
+            <button class="gallery-btn active" onclick="onGalleryPageSelected();toggleMenu()">Gallery</button>
+            <button class="saved-btn" onclick="onSavedPageSelected();toggleMenu()">Saved</button>
         </nav>
-        <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button> 
+        <!-- <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>  -->
+        <button class="menu-toggle-btn" onclick="toggleMenu()"><img src="img/menu-bar.png"></button> 
     </header>
 
     <main class="home-page">
-        <section class="filter flex">
+        <section class="filter flex align-center">
             <form class="flex">
-                <input type="search" placeholder="Search" class="search-field" />
+                <input type="search" onkeyup="onKeyUpSearch()" placeholder="Search" class="search-field" />
                 <button type="submit" class="search-button fa-solid-container">
                 </button>
             </form>
-            <span class="key-words"></span>
+            <span class="key-words flex align-center space-evenly">Hello My Beautiful World Girl</span>
             <button class="more-btn">More</button>
         </section>
         <section class="gallery">
@@ -78,6 +81,8 @@
         </section>
     </main>
 
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/services/galleryService.js"></script>
     <script src="js/memeController.js"></script>

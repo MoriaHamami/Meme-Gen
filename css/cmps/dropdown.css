@@ -1,108 +1,61 @@
-/* .dropdown-journey {
-    position: relative;
-    width: 100%;
-    transition: 0.6s;
-}
-
-.dropbtn {
-
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-} */
-
-/* The container <div> - needed to position the dropdown content */
-/* .dropdown {
-    position: relative;
-    display: inline-block;
-} */
-
-/* Dropdown Content (Hidden by Default) */
-/* .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--clr0);
-    min-width: 130px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-} */
-
-/* Links inside the dropdown */
-/* .dropdown-content a {
-    color: black;
-    padding: 14px 14px;
-    text-decoration: none;
-    display: block;
-} */
-
-/* Change color of dropdown links on hover */
-/* .dropdown-content a:hover {
-    background-color: var(--clr0);
-} */
-
-/* Show the dropdown menu on hover */
-/* .dropdown:hover .dropdown-content {
-    display: block;
-    width: 100%;
-}
-
-@media (max-width: 780px) {
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: var(--clr0);
-        min-width: 5.47em;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-} */
-
-
-
-
-
-
-nav {
+/* MOBILE */
+@media (max-width: 600px) {
+    nav {
+    /* z-index: 2; */
     display: flex;
     position: absolute;
-    transform: translateY(100%);
-    bottom: 0;
-    left: 0;
-    flex-direction: column;
-    align-items: center;
-    background: #292929f7;
-    border-inline-start: 1px solid var(--clr0);
+    top: 100px;
+    transform: translateY(0%);
     width: 100%;
-    justify-content: flex-end;
+    flex-direction: column;
+    background: #292929f7;
     max-height: 0;
-
-    overflow: hidden;
-    transition: max-height 0.6s, box-shadow 0.6s;
+    justify-content: flex-end;
+    overflow: hidden; 
+    /* align-items: center; */
+    /* left: 0; */
+    /* 
+    border-inline-start: 1px solid var(--clr0);
+    
+    /* transition: max-height 0.6s, box-shadow 0.6s; */
+    transition: max-height 0.6s;
 }
 
 body.menu-open nav {
-    box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
     max-height: 100vh;
+    /* box-shadow: -6px 0px 14px rgb(0 0 0 / 20%); */
 }
 
-.main-header nav button:hover {
+/* LATERRR */
+/* nav button:hover {
     color: var(--clr1);
     background: #1e1e1ef7;
     box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0 var(--clr1);
-}
+} 
 
-.main-header nav button {
-    padding: 2rem 0;
-    border-bottom: 1.5px solid rgb(27, 25, 25);
+nav button.active {
+    
+}*/
+
+
+/* TO REMOVE */
+/* nav li {
+    z-index: -1;
+    padding: 1rem 0;
     width: 100%;
+    background-color: white;
     text-align: center;
+} */
+
+
+nav button {
+    padding: 1rem 0;
 }
 
-.main-screen {
+.dark-screen {
     position: fixed;
     inset: 0;
-    background-color: #121212db;
-    /* display: none; */
+    background-color: var(--clr11);
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.6s;
@@ -110,27 +63,29 @@ body.menu-open nav {
     z-index: 1;
 }
 
-body.menu-open .main-screen {
+body.menu-open .dark-screen {
     pointer-events: auto;
-    /* display: block; */
     opacity: 1;
 }
 
-.menu-toggle-btn {
-    background-color: inherit;
+.menu-toggle-btn{
+    background-color: var(--clr8);
     border: none;
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
+    margin: auto 30px auto 0;
 }
 
-/* <nav class="main-nav">
-<ul class="flex clean-list nav-list">
-    <li><a href="#" class="active">Journal</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Work</a></li>
-    <li><a href="#">Contact</a></li>
-</ul>
-</nav>
-<button class="menu-toggle-btn" onclick="toggleMenu()">☰</button> */
+.menu-toggle-btn img {
+    height: 2.5rem;
+}
+
+}
+
+/* TABLET */
+@media (min-width: 600px) {
+  
+    .menu-toggle-btn,.dark-screen {
+      display: none;
+    }
+
+}
 

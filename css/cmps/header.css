@@ -1,6 +1,10 @@
 header {
+  top: 0;
   background-image: var(--clr0);
   height: 100px;
+  position: fixed;
+  width:100%;
+  z-index: 3;
 }
 
 .logo {
@@ -10,19 +14,19 @@ header {
   letter-spacing: 2px;
   font-size: 1.3rem;
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* TABLET */
 @media (min-width: 600px) {
 
   header {
-    margin: 0.714rem;
+    top: auto;
+    width: auto;
+    position: static;
+    margin: 14px;
     border-radius: 4rem;
     height: 73px;
-  }
-
-  .menu-toggle-btn {
-    display: none;
   }
 
   header button.active {

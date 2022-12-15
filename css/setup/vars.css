@@ -7,7 +7,7 @@
     --clr1: #22252c;
 
     /* keywords bgc */
-    --clr2: #fefefe;
+    --clr2: rgb(254, 254, 254,  0.4);
 
     /* main-page bgc */
     --clr3: #383b42;
@@ -18,10 +18,10 @@
     /* white color */
     --clr5: #ffffff;
 
-    /* header btns  */
+    /* header btns */
     --clr6: #fefefe;
 
-    /* box shadow for header btn */
+    /* box shadow for home page btns */
     --clr7: rgba(0, 0, 0, 0.15);
     
     /* see through */
@@ -29,9 +29,15 @@
 
     /* button text color header */
     --clr9:  #21ac91;
-
+    
     /* gradient colors for hover */
     --clr10: linear-gradient(-86deg, #2aac60 0%, #0a7f99 100%);
+    
+    /* dark screen */
+    --clr11:  rgba(18, 18, 18, 0.859);
+
+    /* image shading */
+    --clr12:  rgba(0, 0, 0, 0.561);
 
     /* bp */
     /* --s: 600px;
