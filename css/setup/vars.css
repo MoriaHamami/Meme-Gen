@@ -39,6 +39,12 @@
     /* image shading */
     --clr12:  rgba(0, 0, 0, 0.561);
 
+    /* dropdown buttons */
+    --clr13:  rgba(22, 59, 31, 0.529);
+
+    /* dropdown button active */
+    --clr14:  #9cbdbd;
+
     /* bp */
     /* --s: 600px;
     --m: 740px;

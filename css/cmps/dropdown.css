@@ -50,6 +50,15 @@ nav button.active {
 
 nav button {
     padding: 1rem 0;
+    color: var(--clr9);
+    border: none;
+    background-color: #cae4e4;
+    box-shadow: inset 0px 0px 20px 0px var(--clr13);
+}
+
+nav button.active {
+    background-color: var(--clr14);
+    cursor: auto;
 }
 
 .dark-screen {

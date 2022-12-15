@@ -37,3 +37,7 @@ function onKeyUpSearch() {
     // }, 1500)
 }
 
+function renderKeyWords() {
+    
+}
+

@@ -275,10 +275,18 @@ var gKeywordSearchCountMap = {
 }
 
 let gFilterBy = ''
+let gIsSearching = false
+let gSavedKeys = []
 
 function setImgFilter(filterBy) {
+    if(filterBy) {
+        gIsSearching = true
+        saveKeywords()
+    } else {
+        gIsSearching = false
+        updateKeywordCount()
+    }
     gFilterBy = filterBy
-    // updateKeywordCount()
 }
 
 function getImgs() {
@@ -301,24 +309,29 @@ function getImgs() {
     return imgs
 }
 
-function updateKeywordCount() {
+function saveKeywords() {
+    if (!gFilterBy) return 
+
     // Put in an array all the words from the search bar
     let regex = /\b\w{1,}\b/g
     const words = gFilterBy.toLowerCase().match(regex)
-    console.log('regex:', words)
+
     words.forEach(word => {
         const wordReg = new RegExp(`\\b${word}\\b`)
         Object.keys(gKeywordSearchCountMap).forEach(key => {
+            // If the word searched exists in keys save it 
             if (wordReg.test(key)) {
-                gKeywordSearchCountMap[key]++
-                console.log('key:', gKeywordSearchCountMap)
+                // If the key wasnt saved, save it
+                if(!gSavedKeys.includes(key)) gSavedKeys.push(key)
             }
         })
     })
-    // Save filtered word as regex
-    // regex = /\\b${gFilterBy}\\b/ig
+}
 
-
+function updateKeywordCount() {
+    if(!gSavedKeys) return
+    gSavedKeys.map(key => gKeywordSearchCountMap[key]++)
+    gSavedKeys = []
 }
 
 
