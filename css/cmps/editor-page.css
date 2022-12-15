@@ -1,6 +1,7 @@
 .canvas-container {
-  background-color: #fff;
-  width:100%;
+  /* background-color: #fff; */
+  flex-basis: 50%;
+  justify-content: center;
 }
 
 #color-palette {
@@ -13,7 +14,8 @@
   box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 var(--clr4);
 }
 
-.font-color,.add-line{
+.font-color,
+.add-line {
   box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 var(--clr4);
   border-radius: 2px;
   padding: 4px;
@@ -21,13 +23,13 @@
 }
 
 .control-box {
-  width: 100%;
-  margin:10px;
+  flex-basis: 50%;
+  margin: 10px;
 }
 
-.control-box > *{
-  margin:6px;
-} 
+.control-box>* {
+  margin: 6px;
+}
 
 /* 
 

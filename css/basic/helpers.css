@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.flex.justify-content {
+    justify-content: center;
+}
+
 .flex.space-between {
     justify-content: space-between;
 }

@@ -27,3 +27,8 @@
     font-family: pop-sb;
     src: url("../../lib/fonts/Poppins-SemiBold.ttf");
 }
+
+@font-face {
+    font-family: logo;
+    src: url("../../lib/fonts/CraftyGirls-Regular.ttf");
+}

@@ -1,26 +1,70 @@
-header{
+header {
   background-image: var(--clr0);
-  margin: .5rem .2rem;
-  padding: .2rem .8rem;
-  border-radius: 2rem;
-  height: 73px;
+  height: 100px;
 }
 
-.logo{
-  margin-inline-start: 81px;
+.logo {
+  margin: auto 0 auto 30px;
+  font-family: logo;
+  color: var(--clr5);
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
-header nav{
-  margin-inline-end: 81px;
+/* TABLET */
+@media (min-width: 600px) {
 
-}
-  /* .main-header {
-  background-color: var(--clr0);
-  color: var(--clr4);
-  box-shadow: inset 0px -5px 0 #000;
+  header {
+    margin: 0.714rem;
+    border-radius: 4rem;
+    height: 73px;
+  }
+
+  .menu-toggle-btn {
+    display: none;
+  }
+
+  header button.active {
+    box-shadow: 0 3px 6px 1px var(--clr7);
+    border-radius: 1em;
+    background-color: var(--clr6);
+    color: var(--clr9);
+    border: none;
+    padding: 0.25em 0.8em;
+  }
+
+  header button:not(.active) {
+    border: none;
+    background-color: var(--clr8);
+    color: var(--clr5);
+  }
+
+  .saved-btn {
+    margin-inline-start: 10px;
+  }
+
+  header nav {
+    margin: auto 30px auto 0;
+  }
 }
 
-.main-header .main-nav a {
+/* DESKTOP */
+@media (min-width: 970px) {
+  .logo {
+    margin: auto 0 auto 81px;
+  }
+
+  header nav {
+    margin: auto 263px auto 0;
+  }
+
+  .saved-btn {
+    margin-inline-start: 42px;
+  }
+}
+
+/* .main-header .main-nav a {
   color: inherit;
   text-decoration: none;
   transition: box-shadow 0.4s;
@@ -34,19 +78,9 @@ header nav{
   box-shadow: inset 0px -5px 0 var(--clr1);
   color: var(--clr1);
   cursor: default;
-}
+} */
 
-.logo {
-  font-family: eurofurence, sans-serif;
-  letter-spacing: 0.8px;
-  font-size: 2.5em;
-}
-
-.logo-dot {
-  color: var(--clr1);
-}
-
-@media (max-width: 780px) {
+/* @media (max-width: 780px) {
   .main-header {
     position: fixed;
     width: 100%;
@@ -92,9 +126,9 @@ header nav{
     color: white;
     cursor: pointer;
   }
-}
+} */
 
-@media (min-width: 780px) {
+/* @media (min-width: 780px) {
   .main-header .main-nav li {
     box-shadow: -1px 0 0 #1d1d1d;
   }
@@ -117,4 +151,5 @@ header nav{
   .menu-toggle-btn {
     display: none;
   }
-} */
+}  */
+

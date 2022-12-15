@@ -10,38 +10,40 @@
 </head>
 
 <body onload="onInitGallery()">
+    <div class="main-screen" onclick="toggleMenu()"></div>
+
     <header class="flex space-between">
         <section class="logo">
             memeGen
         </section>
         <nav>
-            <button>Gallery</button>
-            <button>Saved</button>
+            <button class="gallery-btn active">Gallery</button>
+            <button class="saved-btn">Saved</button>
         </nav>
+        <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button> 
     </header>
 
     <main class="home-page">
-        <section class="filter flex space-evenly">
-            <form>
+        <section class="filter flex">
+            <form class="flex">
                 <input type="search" placeholder="Search" class="search-field" />
                 <button type="submit" class="search-button fa-solid-container">
                 </button>
             </form>
             <span class="key-words"></span>
-            <button>More</button>
+            <button class="more-btn">More</button>
         </section>
         <section class="gallery">
         </section>
-
     </main>
 
     <main class="saved-page flex">
 
     </main>
-    
+
     <main class="editor-page flex" hidden>
         <section class="canvas-container flex grow1">
-            <canvas width="400" height="400"></canvas>
+            <canvas></canvas>
         </section>
         <section class="control-box flex flex-column grow1">
             <input type="search" placeholder="Type text here.." class="search-field" id="meme-txt"

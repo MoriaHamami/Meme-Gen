@@ -17,24 +17,24 @@ function onInitEditor() {
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
-    // gElCanvas.height = elContainer.offsetHeight
-
-    // const currImgId = getMeme().selectedImgId
-    // const elImg = document.querySelector(`.img-${currImgId}`)
-    // const IW = elImg.width
-    // const IH = elImg.height
-    // const CH = gElCanvas.height
-    // gElCanvas.width = (IW * CH) / IH
-    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
 
     const currImgId = getMeme().selectedImgId
     const elImg = document.querySelector(`.img-${currImgId}`)
     const IW = elImg.width
     const IH = elImg.height
-    const CW = gElCanvas.width
-    gElCanvas.height = (IH * CW) / IW
-    // gElCanvas.width = elContainer.offsetWidth
+    const CH = gElCanvas.height
+    gElCanvas.width = (IW * CH) / IH
 
+    // gElCanvas.width = elContainer.offsetWidth
+    // const currImgId = getMeme().selectedImgId
+    // const elImg = document.querySelector(`.img-${currImgId}`)
+    // const IW = elImg.width
+    // const IH = elImg.height
+    // const CW = gElCanvas.width
+    // gElCanvas.height = (IH * CW) / IW
+
+    // gElCanvas.width = elContainer.offsetWidth
     // const currImgId = getMeme().selectedImgId
     // const elImg = document.querySelector(`.img-${currImgId}`)
     // const IW = elImg.width

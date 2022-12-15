@@ -12,20 +12,26 @@
     /* main-page bgc */
     --clr3: #383b42;
 
-    /* box shadow color */
+    /* box shadow for edit page */
     --clr4:rgba(255, 255, 255, 0.58);
 
     /* white color */
     --clr5: #ffffff;
-    /* border color  */
 
-    /* card border color */
+    /* header btns  */
+    --clr6: #fefefe;
 
-    /* a footer color */
+    /* box shadow for header btn */
+    --clr7: rgba(0, 0, 0, 0.15);
+    
+    /* see through */
+    --clr8: rgba(0, 0, 0, 0);
 
+    /* button text color header */
+    --clr9:  #21ac91;
 
-    /* footer CR */
-
+    /* gradient colors for hover */
+    --clr10: linear-gradient(-86deg, #2aac60 0%, #0a7f99 100%);
 
     /* bp */
     /* --s: 600px;
