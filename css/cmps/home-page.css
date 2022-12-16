@@ -10,7 +10,7 @@
     flex-wrap: wrap;
 }
 
-.search-button::before {
+.home-page .search-button::before {
     content: "\f002";
     /* Makes magnifying glass gradient */
     background-image: var(--clr0);
@@ -18,7 +18,7 @@
     color: transparent;
 }
 
-.search-field {
+.home-page .search-field {
     font-size: 1rem;
     padding: 0.625em 2.1875em 0.625em 2.1875em;
     
@@ -112,7 +112,7 @@
         height: 2.1em;
     }
 
-    .search-field {
+    .home-page .search-field {
         /* font-size: auto; */
 
         flex-basis: 100%;
@@ -125,7 +125,7 @@
         margin-bottom: 0;
     }  
 
-    .search-button {
+    .home-page .search-button {
         margin-bottom: 0;
     }
 

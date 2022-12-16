@@ -32,3 +32,23 @@
     font-family: logo;
     src: url("../../lib/fonts/CraftyGirls-Regular.ttf");
 }
+
+@font-face {
+    font-family: bangers;
+    src: url("../../lib/fonts/Bangers-Regular.ttf");
+}
+
+@font-face {
+    font-family: bebas;
+    src: url("../../lib/fonts/BebasNeue-Regular.ttf");
+}
+
+@font-face {
+    font-family: comics;
+    src: url("../../lib/fonts/ComicNeue-Regular.ttf");
+}
+
+@font-face {
+    font-family: montserrat;
+    src: url("../../lib/fonts/Montserrat-Black.ttf");
+}

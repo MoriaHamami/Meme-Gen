@@ -2,6 +2,7 @@
 
 function onInitGallery() {
     renderGallery()
+    // renderKeyWords()
 }
 
 function renderGallery() {
@@ -35,9 +36,18 @@ function onKeyUpSearch() {
         renderGallery()
         // document.querySelector('input[name="search"]').value = searchStr
     // }, 1500)
+
+    
+    // renderKeyWords()
 }
 
-function renderKeyWords() {
+// function renderKeyWords() {
+//     const likableWords = getMostSearchedKeys(5)
+//     let strHtmls = likableWords.map(word => `
+//         <span class="word-${word.name}" style="font-size: ${word.fontSize};">${word.name}</span>
+//     `)
+
+//     document.querySelector('.key-words').innerHTML = strHtmls.join('')
     
-}
+// }
 

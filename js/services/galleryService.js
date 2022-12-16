@@ -279,7 +279,7 @@ let gIsSearching = false
 let gSavedKeys = []
 
 function setImgFilter(filterBy) {
-    if(filterBy) {
+    if (filterBy) {
         gIsSearching = true
         saveKeywords()
     } else {
@@ -303,14 +303,14 @@ function getImgs() {
             const wordReg = new RegExp(word)
             // Check if search word is in a keyword
             if (wordReg.test(img.keywords.join(''))) isWordsMatch = true
-            })
+        })
         return isWordsMatch
     })
     return imgs
 }
 
 function saveKeywords() {
-    if (!gFilterBy) return 
+    if (!gFilterBy) return
 
     // Put in an array all the words from the search bar
     let regex = /\b\w{1,}\b/g
@@ -322,17 +322,28 @@ function saveKeywords() {
             // If the word searched exists in keys save it 
             if (wordReg.test(key)) {
                 // If the key wasnt saved, save it
-                if(!gSavedKeys.includes(key)) gSavedKeys.push(key)
+                if (!gSavedKeys.includes(key)) gSavedKeys.push(key)
             }
         })
     })
 }
 
 function updateKeywordCount() {
-    if(!gSavedKeys) return
+    if (!gSavedKeys) return
     gSavedKeys.map(key => gKeywordSearchCountMap[key]++)
     gSavedKeys = []
 }
+
+// function getMostSearchedKeys(num = 3) {
+//     let mostSearched = []
+//     let values = Object.values(gKeywordSearchCountMap)
+//     for(let i=0; i<num; i++){
+//         const max = Math.max(...values)
+//         const key = gKeywordSearchCountMap
+//         const idx = values.findIndex(max)
+//         mostSearched.push({name: key,font: num-i})
+//     }
+// }
 
 
 

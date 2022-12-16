@@ -23,7 +23,7 @@
             <button class="saved-btn" onclick="onSavedPageSelected();toggleMenu()">Saved</button>
         </nav>
         <!-- <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>  -->
-        <button class="menu-toggle-btn" onclick="toggleMenu()"><img src="img/menu-bar.png"></button> 
+        <button class="menu-toggle-btn" onclick="toggleMenu()"><img src="img/menu-bar.png"></button>
     </header>
 
     <main class="home-page">
@@ -45,39 +45,48 @@
     </main>
 
     <main class="editor-page flex" hidden>
-        <section class="canvas-container flex grow1">
+        <section class="canvas-container flex grow1 justify-content">
             <canvas></canvas>
         </section>
-        <section class="control-box flex flex-column grow1">
-            <input type="search" placeholder="Type text here.." class="search-field" id="meme-txt"
-                oninput="onChangeText(value)" />
-            <div class="edit-group-1 flex flex-row space-evenly">
-                <button class="switch-line fa-solid-container"></button>
-                <label for="meme-txt" class="add-line fa-solid-container" onclick="onAddLine()"></label>
-                <button class="delete-line fa-solid-container"></button>
-            </div>
-            <div class="edit-group-2">
-                <div class="btns-row-1 flex flex-row space-evenly">
-                    <button class="increase-font fa-solid-container" onclick="onResizeFont(1)">A</button>
-                    <button class="decrease-font fa-solid-container" onclick="onResizeFont(-1)">A</button>
-                    <button class="align-l fa-solid-container" onclick="onAlign('l')"></button>
-                    <button class="align-c fa-solid-container" onclick="onAlign('c')"></button>
-                    <button class="align-r fa-solid-container" onclick="onAlign('r')"></button>
+        <section class="control-box flex flex-column align-center">
+            <span class="control-box-container flex flex-column align-center justify-content">
+                <input type="search" placeholder="Type text here.." class="search-field" id="meme-txt"
+                    oninput="onChangeText(value)" />
+                <div class="edit-group-1 flex flex-row">
+                    <button class="switch-line fa-solid-container"></button>
+                    <label for="meme-txt" class="add-line fa-solid-container" onclick="onAddLine()"></label>
+                    <button class="delete-line fa-solid-container"></button>
                 </div>
-                <div class="btns-row-2 flex flex-row space-evenly">
-                    <button class="font-family fa-solid-container"></button>
-                    <button class="draw fa-solid-container"></button>
-                    <input type="color" value="#009900" id="color-palette" oninput="onSetColor(value)">
-                    <label for="color-palette" class="font-color fa-solid-container"></label>
+                <div class="edit-group-2">
+                    <div class="btns-row-1 flex flex-row">
+                        <button class="increase-font fa-solid-container" onclick="onResizeFont(1)">A</button>
+                        <button class="decrease-font fa-solid-container" onclick="onResizeFont(-1)">A</button>
+                        <button class="align-l fa-solid-container" onclick="onAlign('l')"></button>
+                        <button class="align-c fa-solid-container" onclick="onAlign('c')"></button>
+                        <button class="align-r fa-solid-container" onclick="onAlign('r')"></button>
+                    </div>
+                    <div class="btns-row-2 flex flex-row">
+                        <select name="font" class="fonts-input flex grow1">
+                            <option value="impact">Impact</option>
+                            <option value="bebas">Bebas Neue</option>
+                            <option value="comics">Comic Neue</option>
+                            <option value="bangers">Bangers</option>
+                            <option value="montserrat">Montserrat</option>
+                        </select>
+                        <!-- <button class="font-family fa-solid-container"></button> -->
+                        <button class="draw fa-solid-container"></button>
+                        <input type="color" value="#009900" id="color-palette" oninput="onSetColor(value)">
+                        <label for="color-palette" class="font-color fa-solid-container"></label>
+                    </div>
                 </div>
-            </div>
-            <div class="stickers">
+                <div class="stickers">
 
-            </div>
-            <div class="export">
-                <button class="share fa-solid-container">Share</button>
-                <button class="download fa-solid-container">Download</button>
-            </div>
+                </div>
+                <div class="export flex flex-row">
+                    <button class="share fa-solid-container"> Share</button>
+                    <button class="download fa-solid-container"> Download</button>
+                </div>
+            </span>
         </section>
     </main>
 

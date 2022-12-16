@@ -45,6 +45,12 @@
     /* dropdown button active */
     --clr14:  #9cbdbd;
 
+    /* bgc edit box */
+    --clr15:  rgb(235, 238, 243, 0.11);
+
+    /* box shadow edit box */
+    --clr16:  #bbc4d1;
+
     /* bp */
     /* --s: 600px;
     --m: 740px;

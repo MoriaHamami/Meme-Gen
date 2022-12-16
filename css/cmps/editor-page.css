@@ -1,7 +1,21 @@
+.editor-page {
+  margin-top: 114px;
+  margin-inline: 20px;
+  flex-wrap: wrap;
+  /* text-align: center;
+  justify-content: center; */
+}
+
+canvas {
+  border-radius: 1.428em;
+  box-shadow: 0 0 1px 4px #c7bcbc4d;
+}
+
 .canvas-container {
+
+  width: calc(100vw - 40px);
+  /* height: calc((100vh - 200px) / 2); */
   /* background-color: #fff; */
-  flex-basis: 50%;
-  justify-content: center;
 }
 
 #color-palette {
@@ -14,6 +28,37 @@
   box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 var(--clr4);
 }
 
+
+.control-box {
+  margin-top: 14px;
+  /* height: calc((100vh - 114px) / 2); */
+  width: calc(100vw - 40px);
+}
+
+.control-box-container {
+  /* width: min-content; */
+  border-radius: 1.428em;
+  /* box-shadow: 1px 5px 0 var(--clr16), inset 0 5px 0 var(--clr5); */
+  background-color: var(--clr15);
+  height: 100%;
+  width: 100%;
+  padding: 25px;
+
+}
+
+.editor-page .search-field {
+  font-size: 1.19rem;
+  text-align: center;
+  box-shadow: 1px 5px 0 #bbc4d1, inset 0 5px 0 #ffffff;
+  border: none;
+  border-radius: 4rem;
+  background-color: #ebeef3;
+  text-transform: uppercase;
+  font-family: pop-m;
+  padding-block: 18px;
+  width: 100%;
+}
+
 .font-color,
 .add-line {
   box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 var(--clr4);
@@ -22,13 +67,105 @@
   background-color: var(--clr5);
 }
 
-.control-box {
-  flex-basis: 50%;
-  margin: 10px;
+.edit-group-1 {
+  margin: 27px;
+
 }
 
-.control-box>* {
-  margin: 6px;
+.edit-group-1>* {
+  width: 2.714rem;
+  height: 2.523rem;
+  border-radius: 10px;
+  color: #ebeef3;
+  border: none;
+  text-align: center;
+  margin-inline: 11px;
+}
+
+.switch-line {
+  background-image: linear-gradient(-38deg, #66c4dc 0%, #40b1ce 50%, #0c98bb 100%);
+  box-shadow: 1px 5px 0 #048b97, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+}
+
+.add-line {
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 1px 5px 0 #015d33, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+  border-radius: 10px;
+  background-image: linear-gradient(-38deg, #42eb5c 0%, #37b34a 100%);
+  text-shadow: 1px 3px 0 rgba(1, 93, 51, 0.61);
+}
+
+.delete-line {
+  box-shadow: 1px 5px 0 #8c0606, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+  background-image: linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
+  font-size: 1.1rem;
+  text-shadow: 1px 3px 0 rgba(140, 6, 6, 0.61);
+}
+
+.edit-group-2 {
+  border-radius: 0.714rem;
+  background-color: #19a59f;
+  padding: 15px 0;
+}
+
+.btns-row-1,
+.btns-row-2 {
+  flex-wrap: wrap;
+}
+
+.btns-row-1>*,
+.btns-row-2>* {
+  margin-top: 19px;
+  width: 2.714rem;
+  height: 2.523rem;
+  border-radius: 10px;
+  color: #22252c;
+  border: none;
+  text-align: center;
+  margin-inline: 17px;
+  background-color: #ffffff;
+  box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
+  font-size: 1.3rem;
+  font-weight: bold;
+
+}
+
+.fonts-input {
+  font-size: 1.3rem;
+  font-family: pop-sb;
+  text-transform: uppercase;
+}
+
+.export {
+  width: 100%;
+}
+
+.export>* {
+  margin-top: 25px;
+  border: none;
+  color: #ffffff;
+  flex-basis: 50%;
+  height: 2.428rem;
+}
+
+.font-color {
+  font-size: 1.5rem;
+}
+
+.share {
+  /* width:100%; */
+  box-shadow: 1px 6px 0 #165c9c, inset 0 5px 0 #6fc4ec;
+  border-radius: 15px;
+  background-color: #1e7cd3;
+}
+
+.download {
+  /* width:100%; */
+  box-shadow: 1px 6px 0 #632687, inset 0 5px 0 #bf8acc;
+  border-radius: 15px;
+  background-color: #8f44bb;
+  margin-inline-start: 17px;
 }
 
 /* 
@@ -97,10 +234,58 @@
   content: "\f53f";
 }
 
-.share::before {
-  content: "\f1e0";
+/* TABLET */
+@media (min-width: 600px) {
+  .editor-page {
+    margin-top: 10px;
+  }
+
+  .share::before {
+    content: "\f1e0";
+  }
+
+  .download::before {
+    content: "\f019";
+  }
 }
 
-.download::before {
-  content: "\f019";
+/* DESKTOP */
+@media (min-width: 970px) {
+  .editor-page {
+    flex-wrap: nowrap;
+    margin-inline: 0;
+  }
+
+  .canvas-container {
+    background-image: url('../../img/meme-bg.png');
+    background-position: center;
+    flex-basis: 50%;
+    width: calc(100vw / 2);
+  }
+
+  .control-box {
+    flex-basis: 50%;
+    width: auto;
+    margin-top: 0;
+
+  }
+
+  .control-box-container {
+    width: min-content;
+  }
+
+  .btns-row-1,
+  .btns-row-2 {
+    flex-wrap: nowrap;
+  }
+
+  .btns-row-2>* {
+    margin-top: 19px;
+  }
+
+  .btns-row-1>* {
+    margin-top: 0;
+  }
+
+ 
 }
