@@ -83,8 +83,8 @@
 
                 </div>
                 <div class="export flex flex-row">
-                    <button class="share fa-solid-container"> Share</button>
-                    <button class="download fa-solid-container"> Download</button>
+                    <button class="share fa-solid-container" onclick="onShareImg()"> Share</button>
+                    <a href ="#" class="download fa-solid-container" onclick="downloadMeme(this)" download="my-meme.jpg"> Download</a>
                 </div>
             </span>
         </section>
@@ -92,6 +92,7 @@
 
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.service.js"></script>
+    <script src="js/services/download.service.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/services/galleryService.js"></script>
     <script src="js/memeController.js"></script>

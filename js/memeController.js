@@ -80,6 +80,8 @@ function renderText() {
                 line.pos.y = gElCanvas.height / 6 * 5
             }
         }
+        // Draw text box before drawing text, so it would appear behind it
+        if (getCurrLine() === line) drawTextBox()
         drawText(
             line.txt,
             line.pos.x,
@@ -89,7 +91,6 @@ function renderText() {
             line.font,
             line.textAlign
         )
-        if(getCurrLine() === line) drawTextBox()
 
         // drawText(line.txt, line.x, line.y)
     })
@@ -145,6 +146,10 @@ function drawTextBox() {
 
     gCtx.fillStyle = 'rgba(255,255,255, 0.42)'
     gCtx.fill()
+
+    // Render text again so it will appear above text box
+    // renderText()
+
 }
 
 //Handle the listeners
@@ -171,6 +176,7 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
+    console.log('here:')
     // Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
     // Check if a line was selected and if so, mark it as selected line
@@ -184,6 +190,10 @@ function onDown(ev) {
 
     // Render meme to show selcted line with text box
     renderMeme()
+
+    // Update input appearing in text input bar
+    document.querySelector('.editor-page .search-field').value = getCurrLine().txt
+
 
 }
 
@@ -258,3 +268,73 @@ function onRemove() {
     document.querySelector('.editor-page .search-field').value = ''
     setLine()
 }
+
+function onShareImg() {
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
+
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        // Encode the instance of certain characters in the url
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
+    }
+    // Send the image to the server
+    doUploadImg(imgDataUrl, onSuccess)
+}
+
+// Make it work without the text bubble
+function downloadMeme(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+    elLink.href = imgContent
+}
+
+
+// function onDraw(x, y, prevPosX, prevPosY) {
+//     let colorLine = gDraw.color
+//     let x =
+//     gCtx.beginPath()
+//     gCtx.lineWidth = '2'
+//     gCtx.moveTo(prevPosX, prevPosY) // Moves the starting point of a new path to the (x, y) coordinates.
+//     gCtx.lineTo(x, y) // Connects the last point in the current path to the specified (x, y) coordinates with a straight line.
+//     gCtx.strokeStyle = colorLine
+//     gCtx.stroke()
+//     updatePrevPos({ x, y })
+
+// }
+
+// function getDraw() {
+//     return gDraw
+// }
+
+// function updatePrevPos(prevPos) {
+//     gDraw.prevPos = prevPos
+// }
+
+// let gCurrMode = gDraw
+// let gDraw = {
+//     name: 'draw',
+//     pos: null,
+//     prevPos: null,
+//     size: 60,
+//     color: 'green',
+//     isDrag: false
+// }
+
+// function renderShape() {
+//     const shape = getShape().name
+//     const color = getColors()
+//     const { pos, size, prevPos } = getShape()
+//     switch (shape) {
+//         case 'square':
+//             drawSquare(pos.x, pos.y, size, color.line)
+//             break
+//         case 'draw':
+//             drawDraw(pos.x, pos.y, prevPos.x, prevPos.y, color.line)
+//             break
+//         case 'circle':
+//             drawCircle(pos.x, pos.y, size, color.line)
+//             break
+//     }
+// }
+
+/* <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">SAVE</a> */
