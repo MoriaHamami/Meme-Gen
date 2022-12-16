@@ -140,6 +140,7 @@ canvas {
   box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
   font-size: 1.3rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .btns-row-1>*:hover,
