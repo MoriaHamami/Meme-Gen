@@ -6,9 +6,14 @@
   justify-content: center; */
 }
 
+.editor-page label,select {
+  cursor: pointer;
+}
+
 canvas {
   border-radius: 1.428em;
   box-shadow: 0 0 1px 4px #c7bcbc4d;
+  cursor: grab;
 }
 
 .canvas-container {
@@ -69,7 +74,6 @@ canvas {
 
 .edit-group-1 {
   margin: 27px;
-
 }
 
 .edit-group-1>* {
@@ -82,9 +86,16 @@ canvas {
   margin-inline: 11px;
 }
 
-.switch-line {
+.edit-group-1>*:hover{
+  opacity: 0.8;
+}
+
+.save {
+  font-size: 1.1rem;
+  padding-top: 5px;
   background-image: linear-gradient(-38deg, #66c4dc 0%, #40b1ce 50%, #0c98bb 100%);
   box-shadow: 1px 5px 0 #048b97, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+  text-shadow: 1px 3px rgba(0, 0, 0, 0.33);
 }
 
 .add-line {
@@ -97,6 +108,7 @@ canvas {
 }
 
 .delete-line {
+  padding-top: 5px;
   box-shadow: 1px 5px 0 #8c0606, inset 0 5px 0 rgba(255, 255, 255, 0.58);
   background-image: linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
   font-size: 1.1rem;
@@ -128,13 +140,38 @@ canvas {
   box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
   font-size: 1.3rem;
   font-weight: bold;
+}
 
+.btns-row-1>*:hover,
+.btns-row-2>*:hover {
+  background-color: rgb(223, 217, 217);
+  box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgb(223, 217, 217);
 }
 
 .fonts-input {
   font-size: 1.3rem;
   font-family: pop-sb;
   text-transform: uppercase;
+}
+
+option[value=bebas]{
+  font-family: bebas;
+}
+
+option[value=impact]{
+  font-family: impact;
+}
+
+option[value=comics]{
+  font-family: comics;
+}
+
+option[value=bangers]{
+  font-family: bangers;
+}
+
+option[value=montserrat]{
+  font-family: montserrat;
 }
 
 .export {
@@ -147,6 +184,10 @@ canvas {
   color: #ffffff;
   flex-basis: 50%;
   height: 2.428rem;
+}
+
+.export>*:hover{
+  opacity: 0.8;
 }
 
 .font-color {
@@ -186,8 +227,8 @@ canvas {
   margin:2px;
 } */
 
-.switch-line::before {
-  content: "\e099";
+.save::before {
+  content: "\f02e";
 }
 
 .add-line::before {

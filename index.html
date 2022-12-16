@@ -50,33 +50,33 @@
         </section>
         <section class="control-box flex flex-column align-center">
             <span class="control-box-container flex flex-column align-center justify-content">
-                <input type="search" placeholder="Type text here.." class="search-field" id="meme-txt"
+                <input type="text" placeholder="Type text here.." class="search-field" id="meme-txt"
                     oninput="onChangeText(value)" />
                 <div class="edit-group-1 flex flex-row">
-                    <button class="switch-line fa-solid-container"></button>
-                    <label for="meme-txt" class="add-line fa-solid-container" onclick="onAddLine()"></label>
-                    <button class="delete-line fa-solid-container"></button>
+                    <button class="save fa-solid-container" title="Save" ></button>
+                    <label for="meme-txt" class="add-line fa-solid-container" title="New line" onclick="onAddLine()"></label>
+                    <button class="delete-line fa-solid-container" title="Delete Line" onclick="onRemove()"></button>
                 </div>
                 <div class="edit-group-2">
                     <div class="btns-row-1 flex flex-row">
-                        <button class="increase-font fa-solid-container" onclick="onResizeFont(1)">A</button>
-                        <button class="decrease-font fa-solid-container" onclick="onResizeFont(-1)">A</button>
-                        <button class="align-l fa-solid-container" onclick="onAlign('l')"></button>
-                        <button class="align-c fa-solid-container" onclick="onAlign('c')"></button>
-                        <button class="align-r fa-solid-container" onclick="onAlign('r')"></button>
+                        <button class="increase-font fa-solid-container" title="Bigger Text" onclick="onResizeFont(1)">A</button>
+                        <button class="decrease-font fa-solid-container" title="Smaller Text" onclick="onResizeFont(-1)">A</button>
+                        <button class="align-l fa-solid-container" title="Align Left" onclick="onAlign('l')"></button>
+                        <button class="align-c fa-solid-container" title="Align Center" onclick="onAlign('c')"></button>
+                        <button class="align-r fa-solid-container" title="Align Right" onclick="onAlign('r')"></button>
                     </div>
                     <div class="btns-row-2 flex flex-row">
-                        <select name="font" class="fonts-input flex grow1">
+                        <select name="font" class="fonts-input flex grow1" onchange="onChangeFont(value)">
                             <option value="impact">Impact</option>
-                            <option value="bebas">Bebas Neue</option>
                             <option value="comics">Comic Neue</option>
                             <option value="bangers">Bangers</option>
                             <option value="montserrat">Montserrat</option>
+                            <option value="bebas">Bebas Neue</option>
                         </select>
                         <!-- <button class="font-family fa-solid-container"></button> -->
-                        <button class="draw fa-solid-container"></button>
+                        <button class="draw fa-solid-container" title="Doodle"></button>
                         <input type="color" value="#009900" id="color-palette" oninput="onSetColor(value)">
-                        <label for="color-palette" class="font-color fa-solid-container"></label>
+                        <label for="color-palette" title="Change Text Color" class="font-color fa-solid-container"></label>
                     </div>
                 </div>
                 <div class="stickers">
