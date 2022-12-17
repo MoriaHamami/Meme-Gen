@@ -1,8 +1,9 @@
 'use strict'
 
 let gMeme = {
-    selectedImgId: 5,
+    selectedImgId: 0,
     selectedLineIdx: 0,
+    url: null,
     lines: [
         {
             pos: {x: null, y:null},
@@ -10,31 +11,57 @@ let gMeme = {
             size: 40,
             align: 'center',
             color: 'white',
+            stroke: 'black',
             font: 'impact',
             isDrag: false,
         }
-    ]
+    ],
+    img: null
+}
+
+// Add new line
+function setLine() {
+    gMeme.lines.push({
+        pos: {x: null, y: null},
+        txt: '',
+        size: 40,
+        align: 'center',
+        color: 'white',
+        font: 'impact',
+        stroke: 'black',
+        isDrag: false,
+    })
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
 function getMeme(){
     return gMeme
 }
 
+function setNewMeme(meme){
+    gMeme = meme
+}
+
 function getCurrLine(){
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
-function setImg(imgId){
+function setImg(imgId, imgURL){
     gMeme.selectedImgId = imgId
+    gMeme.url = imgURL
 }
 
 function setSelectedLine(newLine){
+    if(newLine === null) {
+        gMeme.selectedLineIdx = null
+        return
+    }
     const selectedIdx = gMeme.lines.findIndex(line => line===newLine)
     gMeme.selectedLineIdx = selectedIdx
 }
 
-function setPosition(position) {
-    getCurrLine().pos = position
+function setPositionX(posX) {
+    getCurrLine().pos.x = posX
 }
 
 function setLineTxt(text){
@@ -47,26 +74,17 @@ function setAlignment(alignment){
 
 function setTxtSize(sign) {
     getCurrLine().size += 2 * sign
-    
 }
 
 function setTxtColor(txtColor){
     getCurrLine().color = txtColor
 }
 
-
-// Add new line
-function setLine() {
-    gMeme.lines.push({
-        pos: {x: null, y: null},
-        txt: '',
-        size: 40,
-        align: 'center',
-        color: 'white',
-        font: 'impact'
-    })
-    gMeme.selectedLineIdx = gMeme.lines.length - 1
+function setTxtColorOutline(outlineColor) {
+    getCurrLine().stroke = outlineColor
 }
+
+
 // let gCircle
 
 // function createCircle(pos) {
@@ -93,8 +111,9 @@ function isTextClicked(clickedPos) {
         const yDistance = Math.abs(pos.y - clickedPos.y)
         const xDistance = Math.abs(pos.x - clickedPos.x)
         // Get variables
-        var width = gCtx.measureText(line.txt).width
-        var height = line.size * 1.286
+        var width = gCtx.measureText(line.txt).width 
+        var height = line.size * 1.286 / 2
+
         if(yDistance <= height && xDistance <= width) {
             currClickedLine = line
             setSelectedLine(line)
@@ -110,7 +129,7 @@ function isTextClicked(clickedPos) {
     // Add to width the width size wanted for inline padding of box
     // width += gElCanvas.width / 8
 
-    return yDistance <= height && xDistance <= width
+    // return yDistance <= height && xDistance <= width
     // return distance <= getCurrLine().size * getCurrLine().txt.length
 }
 

@@ -11,6 +11,7 @@
 
 <body onload="onInitGallery()">
     <div class="dark-screen" onclick="toggleMenu()"></div>
+    <div class="modal-dark-screen" onclick="toggleModal();onSubmitWords()"></div>
 
     <header class="flex space-between">
         <section class="logo" onclick="onGalleryPageSelected()">
@@ -26,6 +27,8 @@
         <button class="menu-toggle-btn" onclick="toggleMenu()"><img src="img/menu-bar.png"></button>
     </header>
 
+    <div class="user-msg"></div>
+
     <main class="home-page">
         <section class="filter flex align-center">
             <form class="flex">
@@ -33,15 +36,22 @@
                 <button type="submit" class="search-button fa-solid-container">
                 </button>
             </form>
-            <span class="key-words flex align-center space-evenly">Hello My Beautiful World Girl</span>
+            <span class="key-words flex align-center space-evenly">
+                <span class="keyword word-1" data-word="funny" onclick="setImgFilter(this.data('word'))">funny</span>
+                <span class="keyword word-2" data-word="baby" onclick="setImgFilter(this.data('word'))">baby</span>
+                <span class="keyword word-3" data-word="man" onclick="setImgFilter(this.data('word'))">man</span>
+                <span class="keyword word-4" data-word="actor" onclick="setImgFilter(this.data('word'))">actor</span>
+                <span class="keyword word-5" data-word="happy" onclick="setImgFilter(this.data('word'))">happy</span>
+            </span>
             <button class="more-btn">More</button>
         </section>
         <section class="gallery">
         </section>
     </main>
 
-    <main class="saved-page flex">
-
+    <main class="saved-page" hidden>
+        <section class="gallery">
+        </section>
     </main>
 
     <main class="editor-page flex" hidden>
@@ -53,48 +63,67 @@
                 <input type="text" placeholder="Type text here.." class="search-field" id="meme-txt"
                     oninput="onChangeText(value)" />
                 <div class="edit-group-1 flex flex-row">
-                    <button class="save fa-solid-container" title="Save" ></button>
-                    <label for="meme-txt" class="add-line fa-solid-container" title="New line" onclick="onAddLine()"></label>
+                    <button class="save fa-solid-container" title="Save" onclick="onSaveMeme()"></button>
+                    <label for="meme-txt" class="add-line fa-solid-container" title="New line"
+                        onclick="onAddLine()"></label>
                     <button class="delete-line fa-solid-container" title="Delete Line" onclick="onRemove()"></button>
                 </div>
-                <div class="edit-group-2">
-                    <div class="btns-row-1 flex flex-row">
-                        <button class="increase-font fa-solid-container" title="Bigger Text" onclick="onResizeFont(1)">A</button>
-                        <button class="decrease-font fa-solid-container" title="Smaller Text" onclick="onResizeFont(-1)">A</button>
-                        <button class="align-l fa-solid-container" title="Align Left" onclick="onAlign('l')"></button>
-                        <button class="align-c fa-solid-container" title="Align Center" onclick="onAlign('c')"></button>
-                        <button class="align-r fa-solid-container" title="Align Right" onclick="onAlign('r')"></button>
-                    </div>
-                    <div class="btns-row-2 flex flex-row">
-                        <select name="font" class="fonts-input flex grow1" onchange="onChangeFont(value)">
-                            <option value="impact">Impact</option>
-                            <option value="comics">Comic Neue</option>
-                            <option value="bangers">Bangers</option>
-                            <option value="montserrat">Montserrat</option>
-                            <option value="bebas">Bebas Neue</option>
-                        </select>
-                        <!-- <button class="font-family fa-solid-container"></button> -->
-                        <button class="draw fa-solid-container" title="Doodle"></button>
-                        <input type="color" value="#009900" id="color-palette" oninput="onSetColor(value)">
-                        <label for="color-palette" title="Change Text Color" class="font-color fa-solid-container"></label>
-                    </div>
+                <div class="edit-group-2 btns-row-2 btns-row-1 flex">
+                    <button class="increase-font fa-solid-container" title="Bigger Text"
+                        onclick="onResizeFont(1)">A</button>
+                    <button class="decrease-font fa-solid-container" title="Smaller Text"
+                        onclick="onResizeFont(-1)">A</button>
+                    <button class="align-l fa-solid-container" title="Align Left" onclick="onAlign('l')"></button>
+                    <button class="align-c fa-solid-container" title="Align Center" onclick="onAlign('c')"></button>
+                    <button class="align-r fa-solid-container" title="Align Right" onclick="onAlign('r')"></button>
+                    <select name="font" class="fonts-input flex grow1" onchange="onChangeFont(value)">
+                        <option value="impact">Impact</option>
+                        <option value="comics">Comic Neue</option>
+                        <option value="bangers">Bangers</option>
+                        <option value="montserrat">Montserrat</option>
+                        <option value="bebas">Bebas Neue</option>
+                    </select>
+                    <!-- <button class="draw fa-solid-container" title="Doodle"></button> -->
+                    <input type="color" value="#009900" id="color-palette-outline" oninput="onSetColorOutline(value)">
+                    <label for="color-palette-outline" class="outline-color fa-solid-container" title="Outline Color"></label>
+                    <input type="color" value="#009900" id="color-palette" oninput="onSetColor(value)">
+                    <label for="color-palette" title="Text Color" class="font-color fa-solid-container"></label>
                 </div>
                 <div class="stickers">
 
                 </div>
                 <div class="export flex flex-row">
                     <button class="share fa-solid-container" onclick="onShareImg()"> Share</button>
-                    <a href ="#" class="download fa-solid-container" onclick="downloadMeme(this)" download="my-meme.jpg"> Download</a>
+                    <a href="#" class="download fa-solid-container" onclick="downloadMeme(this)" download="my-meme.jpg">
+                        Download</a>
                 </div>
             </span>
         </section>
     </main>
 
-    <script src="js/services/util.service.js"></script>
-    <script src="js/services/storage.service.js"></script>
-    <script src="js/services/download.service.js"></script>
+    <modal class="modal flex flex-column justify-content align-center">
+        <!-- <div class="modal-content"> -->
+            <h1>Choose Your Image Keywords!</h1>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sunt quas! Voluptates consequatur harum
+                dolor sequi, blanditiis reiciendis temporibus quia?</p> -->
+            <!-- <label for="email">Email:
+                <input type="email" id="email" name="email" placeholder="Please eneter you mail">
+            </label>
+            <button class="modal-btn" onclick="onModalClose()">SUBMIT</button> -->
+            <input type="text" id="words" placeholder="Ex. funny, love ...">
+            <!-- <input type="submit" value="SUBMIT" onclick="onModalClose()" onsubmit="onSubmitWords()"/> -->
+            <label for="words" class="modal-btn" onclick="toggleModal();onSubmitWords()">SUBMIT</label>
+            
+            <!-- <button class="modal-btn" onclick="onModalClose()">SUBMIT</button> -->
+        <!-- </div> -->
+    </modal>
+
+    <script src="js/services/utilService.js"></script>
+    <script src="js/services/storageService.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/services/galleryService.js"></script>
+    <script src="js/services/savedService.js"></script>
+    <script src="js/savedController.js"></script>
     <script src="js/memeController.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/main.js"></script>

@@ -1,5 +1,8 @@
 'use strict'
 
+const KEYWORDS_STORAGE_KEY = 'keywords'
+const IMGS_STORAGE_KEY = 'images'
+
 var gImgs = [
     {
         id: 1,
@@ -278,6 +281,12 @@ let gFilterBy = ''
 let gIsSearching = false
 let gSavedKeys = []
 
+function getKeywordMap() {
+    const storedKeywords = loadFromStorage(KEYWORDS_STORAGE_KEY)
+    if (storedKeywords) gKeywordSearchCountMap = storedKeywords
+    return gKeywordSearchCountMap
+}
+
 function setImgFilter(filterBy) {
     if (filterBy) {
         gIsSearching = true
@@ -290,6 +299,9 @@ function setImgFilter(filterBy) {
 }
 
 function getImgs() {
+    const storedImgs = loadFromStorage(IMGS_STORAGE_KEY)
+    if (storedImgs) gImgs = storedImgs
+
     if (!gFilterBy) return gImgs
     // Put in an array all the words from the search bar
     let regex = /\b\w{1,}\b/g
@@ -332,8 +344,18 @@ function updateKeywordCount() {
     if (!gSavedKeys) return
     gSavedKeys.map(key => gKeywordSearchCountMap[key]++)
     gSavedKeys = []
+    saveToStorage(KEYWORDS_STORAGE_KEY, gKeywordSearchCountMap)
 }
 
+function addImg(img, keywords = []) {
+    gImgs.push(
+        {
+            id: gImgs.length + 1,
+            url: img,
+            keywords
+        }
+    )
+}
 // function getMostSearchedKeys(num = 3) {
 //     let mostSearched = []
 //     let values = Object.values(gKeywordSearchCountMap)
@@ -344,6 +366,10 @@ function updateKeywordCount() {
 //         mostSearched.push({name: key,font: num-i})
 //     }
 // }
+
+function saveImgs() {
+    saveToStorage(IMGS_STORAGE_KEY, gImgs)
+}
 
 
 

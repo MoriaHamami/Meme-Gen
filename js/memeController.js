@@ -1,14 +1,17 @@
 'use strict'
 
+const MEME_STORAGE_KEY = 'saved'
 let gElCanvas
 let gCtx
 let gStartPos
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
-function onInitEditor() {
+function onInitEditor(savedMeme = null) {
+    if(savedMeme) setNewMeme(savedMeme)
+    // if(savedMeme) getMeme() = JSON.parse(savedMeme)
+
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-
     resizeCanvas()
 
     addListeners()
@@ -46,9 +49,10 @@ function resizeCanvas() {
 
 //Renders an image on the canvas and a line of text on top
 function renderMeme() {
-    const currMemeId = getMeme().selectedImgId
+    // const currMemeId = getMeme().selectedImgId
     const elImg = new Image() // Create a new html img element
-    elImg.src = `img/${currMemeId}.jpg` // Send a network req to get that image, define the img src
+    // elImg.src = `img/${currMemeId}.jpg` // Send a network req to get that image, define the img src
+    elImg.src = getMeme().url // Send a network req to get that image, define the img src
 
     // When the image ready draw it on the canvas
     elImg.onload = () => {
@@ -60,6 +64,7 @@ function renderMeme() {
 }
 
 function onChangeText(txt) {
+    if (gMeme.selectedLineIdx === null) setLine()
     setLineTxt(txt)
     renderMeme()
 }
@@ -89,7 +94,8 @@ function renderText() {
             line.size,
             line.color,
             line.font,
-            line.textAlign
+            line.align,
+            line.stroke
         )
 
         // drawText(line.txt, line.x, line.y)
@@ -100,12 +106,14 @@ function renderText() {
     // drawText(pos.x, pos.y, size, color)
 }
 
-function drawText(text, x, y, size, color, font, txtAlign) {
+function drawText(text, x, y, size, color, font, txtAlign, strokeColor) {
+    // gCtx.beginPath()
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = strokeColor
+    // gCtx.strokeStyle = 'black'
     gCtx.fillStyle = color
     gCtx.font = `${size}px ${font}`
-    gCtx.textAlign = 'center'
+    gCtx.textAlign = txtAlign
     gCtx.textBaseline = 'middle'
 
     gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
@@ -113,26 +121,28 @@ function drawText(text, x, y, size, color, font, txtAlign) {
 }
 
 function drawTextBox() {
-
     // Get variables
     const currLine = getCurrLine()
     var width = gCtx.measureText(currLine.txt).width
     var height = currLine.size * 1.286;
-    const x = currLine.pos.x
+    let x = currLine.pos.x
     const y = currLine.pos.y
 
-    // set the font size and font face before measuring
-    // context.font = '14px verdana'
-
-    // Draw using 5px for border radius on all sides
-    // stroke it but no fill
-    // gCtx.roundRect(5, 5, 50, 50, 5)
-
-    // Addto width the width size wanted for inline padding of box
+    // Add to width the width size wanted for inline padding of box
     width += gElCanvas.width / 8
-    // Get the center coordinates of the box
-    const centerX = x - width / 2
-    const centerY = y - height / 2
+    const singleSidedPaddingWidth = gElCanvas.width / 8 / 2
+
+    var coordY = y - height / 2
+
+    // Choose box starting coord according to text coords placement
+    if (currLine.align === 'left') {
+        var coordX = x - singleSidedPaddingWidth
+    } else if (currLine.align === 'right') {
+        var coordX = x - width + singleSidedPaddingWidth
+    } else {
+        // Get the center coordinates of the box
+        var coordX = x - width / 2
+    }
 
     // Draw a round rectangle for text box
     gCtx.lineWidth = 1
@@ -140,7 +150,7 @@ function drawTextBox() {
     gCtx.beginPath()
     // gCtx.ellipse(x, y, height, width, Math.PI / 4, 0, 2 * Math.PI)
     // gCtx.strokeRect(x, y, width, height)
-    gCtx.roundRect(centerX, centerY, width, height, 50)
+    gCtx.roundRect(coordX, coordY, width, height, [50])
 
     gCtx.stroke()
 
@@ -156,6 +166,7 @@ function drawTextBox() {
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
+    addKeyBoardListeners()
     //Listen for resize ev
     window.addEventListener('resize', () => {
         resizeCanvas()
@@ -175,12 +186,25 @@ function addTouchListeners() {
     gElCanvas.addEventListener('touchend', onUp)
 }
 
+function addKeyBoardListeners() {
+    document.querySelector('.editor-page .search-field').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            onAddLine()
+        }
+    })
+}
+
 function onDown(ev) {
-    console.log('here:')
     // Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
     // Check if a line was selected and if so, mark it as selected line
-    if (!isTextClicked(pos)) return
+    if (!isTextClicked(pos)) {
+        // If no line was selected, remove text box and text in input
+        setSelectedLine(null)
+        document.querySelector('.editor-page .search-field').value = ''
+        renderMeme()
+        return
+    }
     // drawTextBox()
 
     setMemeDrag(true)
@@ -198,6 +222,8 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
+    if (getMeme().selectedLineIdx === null) return
+
     const { isDrag } = getCurrLine()
 
     if (!isDrag) return
@@ -213,6 +239,7 @@ function onMove(ev) {
 }
 
 function onUp() {
+    if (getMeme().selectedLineIdx === null) return
     setMemeDrag(false)
     // renderMeme()
     // gElCanvas.style.cursor = 'grab'
@@ -240,11 +267,22 @@ function getEvPos(ev) {
 }
 
 function onSetColor(val) {
+    if (getMeme().selectedLineIdx === null) return
+
     setTxtColor(val)
     renderMeme()
 }
 
+function onSetColorOutline(val) {
+    if (getMeme().selectedLineIdx === null) return
+
+    setTxtColorOutline(val)
+    renderMeme()
+}
+
 function onResizeFont(sign) {
+    if (getMeme().selectedLineIdx === null) return
+
     setTxtSize(sign)
     renderMeme()
 }
@@ -263,6 +301,8 @@ function onChangeFont(font) {
 }
 
 function onRemove() {
+    if (getMeme().selectedLineIdx === null) return
+
     removeLine()
     renderMeme()
     document.querySelector('.editor-page .search-field').value = ''
@@ -282,12 +322,60 @@ function onShareImg() {
     doUploadImg(imgDataUrl, onSuccess)
 }
 
+function doUploadImg(imgDataUrl, onSuccess) {
+    // Pack the image for delivery
+    const formData = new FormData()
+    formData.append('img', imgDataUrl)
+    console.log('formData:', formData)
+    // Send a post req with the image to the server
+    fetch('//ca-upload.com/here/upload.php', { method: 'POST', body: formData })
+        .then(res => res.text())
+        .then(url => {
+            onSuccess(url)
+        })
+}
+
 // Make it work without the text bubble
 function downloadMeme(elLink) {
     const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
     elLink.href = imgContent
 }
 
+function onAlign(alignment) {
+
+    if (getMeme().selectedLineIdx === null) return
+
+    switch (alignment) {
+        case 'l':
+            setAlignment('left')
+            // Position chosen according to text box alignment
+            setPositionX(gElCanvas.width / 16 + 5)
+            break
+        case 'r':
+            setAlignment('right')
+            setPositionX(gElCanvas.width - gElCanvas.width / 16 - 5)
+            break
+        case 'c':
+            setAlignment('center')
+            setPositionX(gElCanvas.width / 2)
+            break
+    }
+    renderMeme()
+}
+
+function onSaveMeme() {
+    let saves = loadFromStorage(MEME_STORAGE_KEY) 
+    if(!saves) saves = []
+
+    // Add to meme object image of canvas
+    const imgURL = gElCanvas.toDataURL('image/jpeg')
+    getMeme().img = imgURL
+    saves.push(getMeme())
+
+    saveToStorage(MEME_STORAGE_KEY, saves)
+
+    flashMsg('Meme Saved!')
+}
 
 // function onDraw(x, y, prevPosX, prevPosY) {
 //     let colorLine = gDraw.color

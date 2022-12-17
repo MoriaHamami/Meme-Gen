@@ -52,7 +52,14 @@ function onGalleryPageSelected() {
     onInitGallery()
 }
 
-//COMPLETE
-function onInitSaved(){
-
+function toggleModal() {
+    // const elModal = document.querySelector('.modal')
+    // elModal.classList.toggle('show')
+    document.body.classList.toggle('modal-open')
 }
+
+// function onModalClose() {
+//     const elModal = document.querySelector('.modal')
+//     elModal.classList.add('show')
+// }
+

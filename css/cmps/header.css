@@ -17,6 +17,10 @@ header {
   cursor: pointer;
 }
 
+.logo:hover{
+  text-shadow: 0 0 9px var(--clr17);
+}
+
 /* TABLET */
 @media (min-width: 600px) {
 

@@ -1,0 +1,16 @@
+.saved-page {
+    padding: 0.952rem;
+    background-color: var(--clr3);
+    margin: 14px;
+    margin-top: 114px;
+    border-radius: 0.476rem;
+}
+
+/* TABLET */
+@media (min-width: 600px) {
+
+    .saved-page {
+        margin-top: 0;
+        padding: 1.19rem ;
+    }
+}

@@ -56,6 +56,10 @@ nav button {
     box-shadow: inset 0px 0px 20px 0px var(--clr13);
 }
 
+nav button:hover:not(.active) {
+    background-color: var(--clr14);
+}
+
 nav button.active {
     background-color: var(--clr14);
     cursor: auto;
