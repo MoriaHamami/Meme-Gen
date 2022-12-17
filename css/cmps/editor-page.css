@@ -1,9 +1,8 @@
+/* GENERAL EDITOR PAGE */
 .editor-page {
   margin-top: 114px;
   margin-inline: 20px;
   flex-wrap: wrap;
-  /* text-align: center;
-  justify-content: center; */
 }
 
 .editor-page label,
@@ -11,6 +10,7 @@ select {
   cursor: pointer;
 }
 
+/* CANVAS AREA */
 canvas {
   border-radius: 1.428em;
   box-shadow: 0 0 1px 4px #c7bcbc4d;
@@ -19,8 +19,6 @@ canvas {
 
 .canvas-container {
   width: calc(100vw - 40px);
-  /* height: calc((100vh - 200px) / 2); */
-  /* background-color: #fff; */
 }
 
 #color-palette {
@@ -38,22 +36,18 @@ canvas {
   box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 var(--clr4);
 }
 
-
+/* CONTROL BOX AREA */
 .control-box {
   margin-top: 14px;
-  /* height: calc((100vh - 114px) / 2); */
   width: calc(100vw - 40px);
 }
 
 .control-box-container {
-  /* width: min-content; */
   border-radius: 1.428em;
-  /* box-shadow: 1px 5px 0 var(--clr16), inset 0 5px 0 var(--clr5); */
   background-color: var(--clr15);
   height: 100%;
   width: 100%;
   padding: 25px;
-
 }
 
 .editor-page .search-field {
@@ -69,8 +63,7 @@ canvas {
   width: 100%;
 }
 
-
-
+/* EDIT GROUP 1 */
 .edit-group-1 {
   margin: 27px;
 }
@@ -114,6 +107,7 @@ canvas {
   text-shadow: 1px 3px 0 rgba(140, 6, 6, 0.61);
 }
 
+/* EDIT GROUP 2 */
 .edit-group-2 {
   border-radius: 0.714rem;
   background-color: #19a59f;
@@ -129,7 +123,6 @@ canvas {
   color: #22252c;
   border: none;
   text-align: center;
-  /* margin-inline: 17px; */
   background-color: #ffffff;
   box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
   font-size: 1.3rem;
@@ -145,10 +138,7 @@ canvas {
 .font-color,
 .add-line,
 .outline-color {
-  /* box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 var(--clr4); */
-  /* border-radius: 2px; */
   padding: 4px;
-  /* background-color: var(--clr5); */
 }
 
 .fonts-input {
@@ -156,7 +146,6 @@ canvas {
   font-family: pop-sb;
   text-transform: uppercase;
 }
-
 
 option[value=bebas] {
   font-family: bebas;
@@ -178,6 +167,15 @@ option[value=montserrat] {
   font-family: montserrat;
 }
 
+.font-color {
+  font-size: 1.5rem;
+}
+
+.outline-color {
+  font-size: 1.4rem;
+}
+
+/* EXPORT OPTIONS */
 .export {
   width: 100%;
 }
@@ -194,23 +192,13 @@ option[value=montserrat] {
   opacity: 0.8;
 }
 
-.font-color {
-  font-size: 1.5rem;
-}
-
-.outline-color {
-  font-size: 1.4rem;
-}
-
 .share {
-  /* width:100%; */
   box-shadow: 1px 6px 0 #165c9c, inset 0 5px 0 #6fc4ec;
   border-radius: 15px;
   background-color: #1e7cd3;
 }
 
 .download {
-  /* width:100%; */
   text-decoration: none;
   text-align: center;
   padding-top: 10px;
@@ -220,24 +208,7 @@ option[value=montserrat] {
   margin-inline-start: 17px;
 }
 
-/* 
-
-.control-box .search-field{
-  
-} 
-
-.edit-group-1,.edit-group-2 > *{
-  margin:2px;
-} 
-
-.edit-group-2 > *{
-  margin:2px;
-} 
-
-.btns-row-2,.btns-row-1 > *{
-  margin:2px;
-} */
-
+/* ICONS IN BUTTONS */
 .save::before {
   content: "\f02e";
 }
@@ -304,8 +275,6 @@ option[value=montserrat] {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr 1fr;
-
-    /* margin-top: 1rem; */
     row-gap: 1rem;
   }
 
@@ -323,10 +292,16 @@ option[value=montserrat] {
     margin-inline: 0;
   }
 
-  .canvas-container {
+  .bg-image {
     background-image: url('../../img/meme-bg.png');
+    background-repeat: no-repeat;
     background-position: center;
-    width: calc(100vw / 2);
+    width: 50%;
+  }
+
+  .canvas-container {
+    margin: auto;
+    width: 450px;
   }
 
   .control-box {

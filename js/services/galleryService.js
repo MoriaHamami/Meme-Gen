@@ -280,23 +280,9 @@ var gKeywordSearchCountMap = {
 let gFilterBy = ''
 let gIsSearching = false
 let gSavedKeys = []
+let gKeywordsToShowNum = 5
 
-function getKeywordMap() {
-    const storedKeywords = loadFromStorage(KEYWORDS_STORAGE_KEY)
-    if (storedKeywords) gKeywordSearchCountMap = storedKeywords
-    return gKeywordSearchCountMap
-}
-
-function setImgFilter(filterBy) {
-    if (filterBy) {
-        gIsSearching = true
-        saveKeywords()
-    } else {
-        gIsSearching = false
-        updateKeywordCount()
-    }
-    gFilterBy = filterBy
-}
+// IMAGES FUNCTIONS 
 
 function getImgs() {
     const storedImgs = loadFromStorage(IMGS_STORAGE_KEY)
@@ -321,6 +307,64 @@ function getImgs() {
     return imgs
 }
 
+function setImgFilter(filterBy) {
+    if (filterBy) {
+        gIsSearching = true
+        saveKeywords()
+    } else {
+        gIsSearching = false
+        updateKeywordCount()
+    }
+    gFilterBy = filterBy
+}
+
+function addImg(img, keywords = []) {
+    gImgs.push(
+        {
+            id: gImgs.length + 1,
+            url: img,
+            keywords
+        }
+    )
+}
+
+function saveImgs() {
+    saveToStorage(IMGS_STORAGE_KEY, gImgs)
+}
+
+// KEYWORDS FUNCTIONS
+
+function getKeywordMap() {
+    const storedKeywords = loadFromStorage(KEYWORDS_STORAGE_KEY)
+    if (storedKeywords) gKeywordSearchCountMap = storedKeywords
+    return gKeywordSearchCountMap
+}
+
+function getKeywordsToShowNum() {
+    return gKeywordsToShowNum
+}
+
+function changeKeywordsToShow(change) {
+    if (gKeywordsToShowNum === 15 && change === 1) return
+    gKeywordsToShowNum += 5 * change
+}
+
+function updateKeywordCount() {
+    if (!gSavedKeys) return
+    gSavedKeys.map(key => gKeywordSearchCountMap[key]++)
+    gSavedKeys = []
+    saveToStorage(KEYWORDS_STORAGE_KEY, gKeywordSearchCountMap)
+}
+
+function updateKeywordCountFromKeywordBox(key) {
+    // If was in the middle of search in search bar
+    updateKeywordCount()
+    document.querySelector('.home-page .search-field').value = ''
+
+    gKeywordSearchCountMap[key]++
+    saveToStorage(KEYWORDS_STORAGE_KEY, gKeywordSearchCountMap)
+}
+
 function saveKeywords() {
     if (!gFilterBy) return
 
@@ -340,36 +384,7 @@ function saveKeywords() {
     })
 }
 
-function updateKeywordCount() {
-    if (!gSavedKeys) return
-    gSavedKeys.map(key => gKeywordSearchCountMap[key]++)
-    gSavedKeys = []
-    saveToStorage(KEYWORDS_STORAGE_KEY, gKeywordSearchCountMap)
-}
 
-function addImg(img, keywords = []) {
-    gImgs.push(
-        {
-            id: gImgs.length + 1,
-            url: img,
-            keywords
-        }
-    )
-}
-// function getMostSearchedKeys(num = 3) {
-//     let mostSearched = []
-//     let values = Object.values(gKeywordSearchCountMap)
-//     for(let i=0; i<num; i++){
-//         const max = Math.max(...values)
-//         const key = gKeywordSearchCountMap
-//         const idx = values.findIndex(max)
-//         mostSearched.push({name: key,font: num-i})
-//     }
-// }
-
-function saveImgs() {
-    saveToStorage(IMGS_STORAGE_KEY, gImgs)
-}
 
 
 

@@ -4,28 +4,8 @@ function toggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 
-function onActiveGallery(){
-    const elGalleryBtn = document.querySelector('.gallery-btn')
-    if(elGalleryBtn.classList.contains('active')) return
-    elGalleryBtn.classList.add('active')
-}
-
-function offActiveGallery(){
-    const elGalleryBtn = document.querySelector('.gallery-btn')
-    if(!elGalleryBtn.classList.contains('active')) return
-    elGalleryBtn.classList.remove('active')
-}
-
-function onActiveSaved(){
-    const elSavedBtn = document.querySelector('.saved-btn')
-    if(elSavedBtn.classList.contains('active')) return
-    elSavedBtn.classList.add('active')
-}
-
-function offActiveSaved(){
-    const elSavedBtn = document.querySelector('.saved-btn')
-    if(!elSavedBtn.classList.contains('active')) return
-    elSavedBtn.classList.remove('active')
+function toggleModal() {
+    document.body.classList.toggle('modal-open')
 }
 
 function onSavedPageSelected() {
@@ -52,14 +32,32 @@ function onGalleryPageSelected() {
     onInitGallery()
 }
 
-function toggleModal() {
-    // const elModal = document.querySelector('.modal')
-    // elModal.classList.toggle('show')
-    document.body.classList.toggle('modal-open')
+function onActiveGallery() {
+    const elGalleryBtn = document.querySelector('.gallery-btn')
+    if (elGalleryBtn.classList.contains('active')) return
+    elGalleryBtn.classList.add('active')
 }
 
-// function onModalClose() {
-//     const elModal = document.querySelector('.modal')
-//     elModal.classList.add('show')
-// }
+function offActiveGallery() {
+    const elGalleryBtn = document.querySelector('.gallery-btn')
+    if (!elGalleryBtn.classList.contains('active')) return
+    elGalleryBtn.classList.remove('active')
+}
+
+function onActiveSaved() {
+    const elSavedBtn = document.querySelector('.saved-btn')
+    if (elSavedBtn.classList.contains('active')) return
+    elSavedBtn.classList.add('active')
+}
+
+function offActiveSaved() {
+    const elSavedBtn = document.querySelector('.saved-btn')
+    if (!elSavedBtn.classList.contains('active')) return
+    elSavedBtn.classList.remove('active')
+}
+
+
+
+
+
 

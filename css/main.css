@@ -4,10 +4,8 @@
 
 /* Basic */
 @import './basic/base.css';
-@import './basic/buttons.css';
 @import './basic/icons.css';
 @import './basic/helpers.css';
-@import './basic/layout.css';
 
 /* Cmps */
 @import './cmps/header.css';

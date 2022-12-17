@@ -8,9 +8,15 @@
 
 /* TABLET */
 @media (min-width: 600px) {
-
     .saved-page {
         margin-top: 0;
-        padding: 1.19rem ;
+        padding: 1.19rem;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 970px) {
+    .saved-page {
+        height: 100%;
     }
 }

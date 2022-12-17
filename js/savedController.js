@@ -13,26 +13,18 @@ function renderSavedGallery() {
     `
     )
     document.querySelector('.saved-page .gallery').innerHTML = strHtmls.join('')
-
-    // countIdx = 0
-    // savedImgs.map(meme => {
-    //     document.querySelector(`.img-${countIdx++}`).onclick = onSavedImgSelect(meme)
-    // })
-    // img-${countIdx}
 }
 
 function onSavedImgSelect(memeIdx) {
     const savedImgs = loadFromStorage(MEME_STORAGE_KEY)
     const meme = savedImgs[memeIdx]
-
+    // Show selected page in header 
     offActiveGallery()
     offActiveSaved()
+    // Reveal wanted page and hide the other
     const elSavedPage = document.querySelector('.saved-page')
     const elEditorPage = document.querySelector('.editor-page')
     elSavedPage.hidden = true
     elEditorPage.hidden = false
-    console.log('elSavedPage.hidden:', elSavedPage.hidden)
-    // const memeObj = JSON.parse(memeString)
     onInitEditor(meme)
-    // onInitEditor(memeObj)
 }
