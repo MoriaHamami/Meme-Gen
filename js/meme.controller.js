@@ -54,7 +54,7 @@ function onDown(ev) {
     setMemeDrag(true)
     //Save the pos we start from
     gStartPos = pos
-    document.body.style.cursor = 'grabbing'
+    document.querySelector('canvas').style.cursor = 'grabbing'
 
     // Render meme to show selcted line with text box
     renderMeme()
@@ -82,6 +82,7 @@ function onMove(ev) {
 function onUp() {
     if (getMeme().selectedLineIdx === null) return
     setMemeDrag(false)
+    document.querySelector('canvas').style.cursor = 'grab'
 }
 
 function getEvPos(ev) {

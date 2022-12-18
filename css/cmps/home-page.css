@@ -143,8 +143,9 @@
         width: 0;
         margin-bottom: 0;
     }
-
+    
     .home-page .search-button {
+        cursor: auto;
         margin-bottom: 0;
     }
 

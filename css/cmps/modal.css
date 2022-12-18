@@ -24,7 +24,7 @@ body.modal-open .modal {
     margin: 0.6rem;
 }
 
-#words {
+.words {
     border-radius: 4rem;
     padding: 20px;
     width: 100%;

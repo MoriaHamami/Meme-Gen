@@ -13,7 +13,7 @@ function renderGallery() {
         <img class="gallery-img img-${img.id}" src="${img.url}" onclick="onImgSelect(${img.id})">
     `
     )
-    strHtmls.unshift('<label class="gallery-img upload flex justify-content" style="background-color:var(--clr1)"><input type="file" id="file-input btn" name="image" onchange="uploadImg(event)" style="position: absolute;visibility: hidden;"/></label>')
+    strHtmls.unshift('<label class="gallery-img upload flex justify-content" style="background-color:var(--clr1)"><input type="file" id="file-input btn" name="image" onchange="onUploadImg(event)" style="position: absolute;visibility: hidden;"/></label>')
     document.querySelector('.home-page .gallery').innerHTML = strHtmls.join('')
 }
 
@@ -73,6 +73,8 @@ function onKeyUpSearch(searchVal = null) {
     } else {
         // If the search came from keyword press, update keyword map
         updateKeywordCountFromKeywordBox(searchVal)
+        // Put word in search box
+        document.querySelector('.home-page .search-field').value = searchVal
     }
 
     setImgFilter(searchVal)
@@ -93,26 +95,12 @@ function onImgSelect(imgId) {
     onInitEditor()
 }
 
-// The next 2 functions handle IMAGE UPLOADING to img tag from file system:
-function uploadImg(ev) {
-    loadImageFromInput(ev, addImgToGallery)
-}
-
-// CallBack func will run on success load of the img
-function loadImageFromInput(ev, onImageReady) {
-    const reader = new FileReader()
-    // After we read the file
-    reader.onload = (event) => {
-        let img = new Image() // Create a new html img element
-        img.src = event.target.result // Set the img src to the img file we read
-        // Run the callBack func, to render the img
-        img.onload = () => onImageReady(img)
-    }
-    reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+function onUploadImg(ev) {
+    loadImageFromInput(ev, onAddImgToGallery)
 }
 
 // The next 2 functions handle getting keywords for image and saving it in gallery
-function addImgToGallery(img) {
+function onAddImgToGallery(img) {
     gImgUploaded = img.src
     // Get keywords, and when submitted image is saved 
     toggleModal()

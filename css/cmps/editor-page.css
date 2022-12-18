@@ -21,12 +21,12 @@ canvas {
   width: calc(100vw - 40px);
 }
 
-#color-palette {
+.color-palette {
   position: absolute;
   visibility: hidden;
 }
 
-#color-palette-outline {
+.color-palette-outline {
   position: absolute;
   visibility: hidden;
 }
@@ -68,7 +68,7 @@ canvas {
   margin: 27px;
 }
 
-.edit-group-1>* {
+.edit-group-1 > * {
   width: 2.714rem;
   height: 2.523rem;
   border-radius: 10px;
@@ -78,7 +78,7 @@ canvas {
   margin-inline: 11px;
 }
 
-.edit-group-1>*:hover {
+.edit-group-1 > *:hover {
   opacity: 0.8;
 }
 
@@ -115,7 +115,7 @@ canvas {
   flex-wrap: wrap;
 }
 
-.edit-group-2>* {
+.edit-group-2 > * {
   margin: 9px 17px;
   width: 2.714rem;
   height: 2.523rem;
@@ -130,7 +130,7 @@ canvas {
   text-align: center;
 }
 
-.edit-group-2>*:hover {
+.edit-group-2 > *:hover {
   background-color: rgb(223, 217, 217);
   box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgb(223, 217, 217);
 }
@@ -180,7 +180,7 @@ option[value=montserrat] {
   width: 100%;
 }
 
-.export>* {
+.export > * {
   margin-top: 25px;
   border: none;
   color: #ffffff;
@@ -188,7 +188,7 @@ option[value=montserrat] {
   height: 2.428rem;
 }
 
-.export>*:hover {
+.export > *:hover {
   opacity: 0.8;
 }
 

@@ -10,7 +10,7 @@
 </head>
 
 <body onload="onInitGallery()">
-    <div class="dark-screen" onclick="toggleMenu()"></div>
+    <div class="dark-screen" onclick="onToggleMenu()"></div>
     <div class="modal-dark-screen" onclick="toggleModal();onSubmitWords()"></div>
 
     <header class="flex space-between">
@@ -18,10 +18,10 @@
             memeGen
         </section>
         <nav>
-            <button class="gallery-btn active" onclick="onGalleryPageSelected();toggleMenu()">Gallery</button>
-            <button class="saved-btn" onclick="onSavedPageSelected();toggleMenu()">Saved</button>
+            <button class="gallery-btn active" onclick="onGalleryPageSelected();onToggleMenu()">Gallery</button>
+            <button class="saved-btn" onclick="onSavedPageSelected();onToggleMenu()">Saved</button>
         </nav>
-        <button class="menu-toggle-btn" onclick="toggleMenu()"><img src="img/menu-bar.png"></button>
+        <button class="menu-toggle-btn" onclick="onToggleMenu()"><img src="img/menu-bar.png"></button>
     </header>
 
     <div class="user-msg"></div>
@@ -97,9 +97,9 @@
                         <option value="montserrat">Montserrat</option>
                         <option value="bebas">Bebas Neue</option>
                     </select>
-                    <input type="color" value="#009900" id="color-palette-outline" oninput="onSetColorOutline(value)">
+                    <input type="color" value="#009900" id="color-palette-outline" class="color-palette-outline" oninput="onSetColorOutline(value)">
                     <label for="color-palette-outline" class="outline-color fa-solid-container" title="Outline Color"></label>
-                    <input type="color" value="#009900" id="color-palette" oninput="onSetColor(value)">
+                    <input type="color" value="#009900" id="color-palette" class="color-palette" oninput="onSetColor(value)">
                     <label for="color-palette" title="Text Color" class="font-color fa-solid-container"></label>
                 </div>
                 <div class="stickers">
@@ -116,17 +116,17 @@
 
     <modal class="modal flex flex-column justify-content align-center">
             <h1>Choose Your Image Keywords!</h1>
-            <input type="text" id="words" placeholder="Ex. funny, love ...">
+            <input type="text" id="words" class="words" placeholder="Ex. funny, love ...">
             <label for="words" class="modal-btn" onclick="toggleModal();onSubmitWords()">SUBMIT</label>
     </modal>
 
-    <script src="js/services/utilService.js"></script>
-    <script src="js/services/storageService.js"></script>
-    <script src="js/services/memeService.js"></script>
-    <script src="js/services/galleryService.js"></script>
-    <script src="js/savedController.js"></script>
-    <script src="js/memeController.js"></script>
-    <script src="js/galleryController.js"></script>
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/services/gallery.service.js"></script>
+    <script src="js/saved.controller.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
     <script src="js/main.js"></script>
 </body>
 

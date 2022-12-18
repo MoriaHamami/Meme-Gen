@@ -1,6 +1,6 @@
 'use strict'
 
-function toggleMenu() {
+function onToggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 
@@ -32,7 +32,7 @@ function onGalleryPageSelected() {
     onInitGallery()
 }
 
-function onActiveGallery() {
+function onActiveGallery(path) {
     const elGalleryBtn = document.querySelector('.gallery-btn')
     if (elGalleryBtn.classList.contains('active')) return
     elGalleryBtn.classList.add('active')
