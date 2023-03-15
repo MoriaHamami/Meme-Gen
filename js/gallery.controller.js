@@ -66,6 +66,7 @@ function renderKeywordLines(change) {
     }
 }
 
+// Add prevent default or probogation if needed!!!
 function onKeyUpSearch(searchVal = null) {
     if (searchVal === null) {
         // If the search came from search box, get search value
