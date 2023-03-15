@@ -2,7 +2,7 @@
 	<h1>Meme-Gen</h1>
 </div>
 
-An awesome Meme Generator, made pixel-perfect according to a given UI design using pure CSS (no use of CSS Libraries or jQuery), which works great on both desktop and mobile. [Check it out here](https://moriahamami.github.io/Meme-Gen/ "Website link")!
+An awesome Meme Generator, built in 4 days, made pixel-perfect according to a given UI design using pure CSS (no use of CSS Libraries or jQuery), which works great on both desktop and mobile. [Check it out here](https://moriahamami.github.io/Meme-Gen/ "Website link")!
 
 The app has two main UI areas: Image-Gallery and Meme-Editor. Once the user selects an image on the Image-Gallery, the image is presented on the Meme-Editor, where the user can edit and create a meme, and once ready - download it. 
 ** The app supports viewing various aspect-ratio images, with a consistent, clean design.
